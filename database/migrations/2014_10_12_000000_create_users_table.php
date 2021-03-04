@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->integer('gender');
             $table->string('username')->index();
             $table->string('slug')->index()->nullable();
-            $table->string('university_id')->index();
+            $table->string('university_id')->index()->nullable();
             $table->text('about')->nullable();
             $table->string('email')->unique()->index();
             $table->timestamp('email_verified_at')->nullable();
