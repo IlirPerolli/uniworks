@@ -6,28 +6,28 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
-class University extends Model
+class Post extends Model
 {
     use HasFactory;
-    use HasFactory, Notifiable;
     use Sluggable;
     use SluggableScopeHelpers;
     public function sluggable()
     {
         return [
             'slug' => [
-                'source' => 'username',
+                'source' => 'title',
                 'onUpdate'=> true,
             ]
         ];
     }
-    protected $fillable = [
-        'name','slug'
-    ];
-    public function posts(){
+    use HasFactory;
+    protected $fillable = ['file_id','title','abstract','category_id', 'resource', 'views', 'slug'];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function category(){
 
-        return $this->hasMany(Post::class);
+        return $this->belongsTo(Category::class);
     }
 }
