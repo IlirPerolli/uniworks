@@ -24,7 +24,7 @@ class Post extends Model
     use HasFactory;
     protected $fillable = ['file_id','title','abstract','category_id', 'resource', 'views', 'slug'];
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
     public function category(){
 

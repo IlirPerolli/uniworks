@@ -4,6 +4,11 @@ body {
 
 
 /* Navbar */
+#navbar-links-mobile{
+    display: none;
+    margin-left: 5px;
+}
+
 .start-header {
     opacity: 1;
     transform: translateY(0);
@@ -202,6 +207,12 @@ p{
 ================================================== */
 
 @media (max-width: 767px) {
+    #navbar-links-mobile{
+        display: inline-block;
+    }
+    .login-btn{
+        margin-top: 5px;
+    }
     h1{
         font-size: 38px;
     }
@@ -260,6 +271,7 @@ p{
     width: 60%;
     margin: auto;
     margin-top: 75px;
+    margin-bottom: 150px;
 }
 
 .random-articles h6 {
@@ -602,6 +614,84 @@ label:focus,
     }
 }
 
+
+/* Add Article */
+#title-row h1 {
+    margin-top: 150px;
+    text-align: left;
+    font-size: 40px;
+}
+
+#content-row {
+    width: 75%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+#content-row form {
+    margin: auto;
+    width: 100%;
+}
+
+.form-group label {
+    margin-top: 10px;
+}
+
+.form-group input[placeholder] {
+    font-size: 15px;
+}
+
+.form-group textarea[placeholder] {
+    font-size: 15px;
+}
+
+.form-control {
+    border: 0;
+    border-bottom: 3px solid #006fa5;
+    border-radius: 0;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 400px) {
+    .form-group textarea[placeholder] {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .form-group textarea[placeholder] {
+        font-size: 10px;
+    }
+}
+
+
+.post-article-btn {
+    border: 1px solid green;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 200px;
+    width: 100%;
+    border-radius: 30px;
+    border: 0;
+    background-color: #006fa5;
+    color: white;
+}
+
+.post-article-btn:hover {
+    background-color: #006ea5dc;
+    color: white;
+}
+
+.post-article-btn h6 {
+    margin: auto;
+    padding: 8px;
+    font-size: 1.25em;
+}
+
+.post-article-btn a {
+    text-decoration: none;
+    color: white;
+}
 
 /* Footer */
 .footer {

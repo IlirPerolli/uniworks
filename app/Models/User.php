@@ -36,7 +36,7 @@ class User extends Authenticatable
         return $this->belongsTo(Photo::class);
     }
     public function posts(){
-        return $this->hasMany(Post::class);
+        return $this->belongsToMany(Post::class)->withTimestamps();
     }
     public function role(){
         return $this->belongsTo(Role::class);

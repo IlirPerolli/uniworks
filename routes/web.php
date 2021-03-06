@@ -18,7 +18,13 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::get('/',function(){
    return view('index');
-});
+})->name('home');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/post/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
+Route::post('/post/store', 'App\Http\Controllers\PostsController@store')->name('post.store');
+
+Route::get('autocomplete', 'App\Http\Controllers\PostsController@autocomplete')->name('autocomplete');
+
