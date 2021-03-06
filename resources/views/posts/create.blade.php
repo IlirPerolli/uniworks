@@ -1,4 +1,9 @@
 @extends('layouts.index')
+
+@section('title')
+    <title>Krijo postim</title>
+@endsection
+
 @section('content')
 
     <!-- Add Article -->
@@ -8,8 +13,13 @@
                 <h1>Krijo një artikull</h1>
             </div>
         </div>
+        @if(session()->has('added_post'))
+            <div class="alert alert-success" role="alert">
+                {{session('added_post')}}
+            </div>
+        @endif
         <div class="row" id="content-row">
-            <form id="add-article-form" action="{{route('post.store')}}" method="POST">
+            <form id="add-article-form" action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" id="username1" name="username[]">
                 <input type="hidden" id="username2" name="username[]">
@@ -19,14 +29,22 @@
 
                 <div class="form-group">
                     <label for="title">Titulli</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Titulli i artikullit" autocomplete="off">
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" placeholder="Titulli i artikullit" autocomplete="off">
                 </div>
+                @error('title')
+                <span style="color:red">{{ $message }}</span>
+                @enderror
 
                 <div class="form-group">
                     <label for="abstract">Abstrakti</label>
                     <textarea class="form-control" id="abstract" name="abstract" rows="1"
-                              placeholder="Shkruani abstraktin e artikullit..."></textarea>
-                </div><span> Autoret </span>
+                              placeholder="Shkruani abstraktin e artikullit...">{{old('abstract')}}</textarea>
+                </div>
+                @error('abstract')
+                <span style="color:red">{{ $message }}</span>
+                @enderror
+                <br>
+                <span> Autoret </span>
                 <div class="form-row">
 
                     <div class="col-sm-12 col-md-6">
@@ -54,32 +72,50 @@
                         </div>
                     </div>
 
-                </div>
 
+                </div>
+                @if(session()->has('duplicate_username'))
+                    <div class="alert alert-danger" role="alert">
+                        {{session('duplicate_username')}}
+                    </div>
+                @endif
+{{--                @error('author.*')--}}
+{{--                <span style="color:red">{{ $message }}</span>--}}
+{{--                @enderror--}}
+                <div class="form-group">
+                    <label for="resource">Burimi</label>
+                    <input type="text" class="form-control" id="resource" value="{{ old('resource') }}" name="resource" placeholder="Burimi i artikullit" autocomplete="off">
+                    @error('resource')
+                    <span style="color:red">{{ $message }}</span>
+                    @enderror
+                </div>
 
                     <div class="form-row">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
                                 <label for="category">Kategoria</label>
-                                <select class="form-control" id="category">
-                                    <option>Prova</option>
-                                    <option>Prova</option>
-                                    <option>Prova</option>
-                                    <option>Prova</option>
-                                    <option>Prova</option>
-                                    <option>Prova</option>
-                                    <option>Prova</option>
-                                    <option>Prova</option>
-                                    <option>Prova</option>
-                                    <option>Prova</option>
+                                <select class="form-control" name="category_id" id="category">
+                                    <option value="">Zgjedh kategorine</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : ''}} >{{$category->name}}</option>
+                                    @endforeach
                                 </select>
+                                @error('category_id')
+                                <span style="color:red">{{ $message }}</span>
+                                @enderror
+                                @if(session()->has('category_error'))
+                                    <span style="color:red">{{session('category_error')}}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
                                 <div class="form-group" id="upload-article">
                                     <label for="upload">Ngarko artikullin</label>
-                                    <input type="file" class="form-control-file" id="upload">
+                                    <input type="file" name="file_id" class="form-control-file" id="upload">
                                 </div>
+                            @error('file_id')
+                            <span style="color:red">{{ $message }}</span>
+                            @enderror
 
                         </div>
                     </div>

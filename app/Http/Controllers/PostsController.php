@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\UserStorePostRequest;
+use App\Models\Category;
+use App\Models\File;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,7 +28,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create', compact('categories'));
 
     }
 
@@ -35,13 +39,48 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStorePostRequest $request)
     {
-       // auth()->user()->posts()->attach(2);
-        $request['file_id']=1;
-       $post = Post::create($request->all());
+        $user = auth()->user();
+        $input = $request->all();
+
+        $category = Category::find($request->category_id);
+        if (!$category){
+            session()->flash('category_error', 'Oops... Kategoria nuk u gjet.');
+            return back();
+        }
+       // dd($request->all());
         $iteration = -1;
-        foreach ($request->username as $username){
+        $usernames =[];
+        foreach($request->username as $username) {//shiko te gjithe usernamet e shtypur ne forme dhe futi ne vargun usernames
+            if ($username != null) {
+                $usernames[] = $username;
+            }
+        }
+        $usernames[] = $user->username; // merr usernamin e perdoruesit te kyqur
+        if (count($usernames) !== count(array_unique($usernames))){ //nese vlerat perseriten
+            session()->flash('duplicate_username', 'Nuk mund të jenë 2 autorë të njejtë.');
+            return back();
+            }
+
+
+        if ($file = $request->file('file_id')){ //shto filen ne storage
+                if (strpos($file->getClientOriginalName(),'chat') !== false) {
+                    $file_name = $file->getClientOriginalName();
+                    $name = time().str_replace("chat",$user->username,$file_name); //Per shkak te serverit qe se perkrah fjalen chat
+                }
+                else{
+                    $name = time() . $file->getClientOriginalName();
+                }
+
+                $file->move('files', $name);
+            $file = File::create(['name'=>$name]);
+                $input['file_id'] = $file->id;
+            }
+       $post = Post::create($input); //krijo postimin
+
+        $iteration = -1;
+        foreach ($request->username as $username){ //krijo postimet per userat tjere
             $iteration++;
                 if ($username == null){
                     if ($request->author[$iteration] != null){
@@ -54,8 +93,10 @@ class PostsController extends Controller
 //                $user_id = $user->id;
                 $user->posts()->attach($post->id);
             }
-
         }
+
+        auth()->user()->attach($post->id);//krijo postim per vete
+        session()->flash('added_post', 'Postimi u krijua me sukses.');
     return back();
         //dd($request->username);
         //$user->posts()->attach(2);

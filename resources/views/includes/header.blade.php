@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    @yield('title')
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -61,7 +61,7 @@
                         <ul class="navbar-nav ml-auto py-4 py-md-0">
 
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="home-btn nav-link" href="{{route('home')}}"><svg
+                                <a class="home-btn nav-link" href="{{route('index')}}"><svg
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -70,7 +70,7 @@
                             </li>
                             @if (auth()->check())
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="home-btn nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                                <a class="home-btn nav-link" href="{{route('post.create')}}"><svg xmlns="http://www.w3.org/2000/svg"
                                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                               d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />

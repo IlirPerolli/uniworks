@@ -18,13 +18,22 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::get('/',function(){
    return view('index');
-})->name('home');
+})->name('index');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/post/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
-Route::post('/post/store', 'App\Http\Controllers\PostsController@store')->name('post.store');
+Route::middleware(['auth', 'admin'])->group(function(){
+Route::get('admin/category/create','App\Http\Controllers\CategoriesController@create' )->name('category.create');
+    Route::post('admin/category/store', 'App\Http\Controllers\CategoriesController@store')->name('category.store');
+    Route::delete('admin/category/{category}/destroy','App\Http\Controllers\CategoriesController@destroy')->name('category.destroy');
+
+});
 
 Route::get('autocomplete', 'App\Http\Controllers\PostsController@autocomplete')->name('autocomplete');
+Route::middleware('auth',)->group(function(){
+    Route::get('/post/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
+    Route::post('/post/store', 'App\Http\Controllers\PostsController@store')->name('post.store');
+});
 
+Route::get('/category/{category}','App\Http\Controllers\CategoriesController@show')->name('category.show');
