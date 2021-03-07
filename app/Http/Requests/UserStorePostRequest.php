@@ -35,7 +35,7 @@ class UserStorePostRequest extends FormRequest
     }
     public function messages(){
         return [
-            'file_id.required'=>'Ju lutem ngarkoni një dodument.',
+            'file_id.required'=>'Ju lutem ngarkoni një dokument.',
             'file_id.mimes'=>'Ju lutem ngarkoni foto të formatit: pdf.',
             'title.required'=>'Titulli duhet të plotësohet.',
             'title.max'=>'Titulli duhet te kete maksimum 200 karaktere.',

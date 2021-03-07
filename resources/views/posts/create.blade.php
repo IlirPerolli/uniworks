@@ -21,10 +21,10 @@
         <div class="row" id="content-row">
             <form id="add-article-form" action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" id="username1" name="username[]">
-                <input type="hidden" id="username2" name="username[]">
-                <input type="hidden" id="username3" name="username[]">
-                <input type="hidden" id="username4" name="username[]">
+                <input type="hidden" id="id1" name="id[]">
+                <input type="hidden" id="id2" name="id[]">
+                <input type="hidden" id="id3" name="id[]">
+                <input type="hidden" id="id4" name="id[]">
 
 
                 <div class="form-group">
@@ -147,8 +147,8 @@
         autoFocus:true,
         select:function(e,ui)
         {
-            $('#author1').val(ui.item.username);
-            $('#username1').val(ui.item.username);
+            $('#author1').val(ui.item.value);
+            $('#id1').val(ui.item.id);
         }
     });
     $('#author2').autocomplete({
@@ -158,7 +158,7 @@
         select:function(e,ui)
         {
             $('#author2').val(ui.item.value);
-            $('#username2').val(ui.item.username);
+            $('#id2').val(ui.item.id);
         }
     });
     $('#author3').autocomplete({
@@ -168,7 +168,7 @@
         select:function(e,ui)
         {
             $('#author3').val(ui.item.value);
-            $('#username3').val(ui.item.username);
+            $('#id3').val(ui.item.id);
         }
     });
     $('#author4').autocomplete({
@@ -178,7 +178,7 @@
         select:function(e,ui)
         {
             $('#author4').val(ui.item.value);
-            $('#username4').val(ui.item.username);
+            $('#id4').val(ui.item.id);
         }
     });
 

@@ -41,6 +41,7 @@ class PostsController extends Controller
      */
     public function store(UserStorePostRequest $request)
     {
+       // dd($request->all());
         $user = auth()->user();
         $input = $request->all();
 
@@ -51,14 +52,14 @@ class PostsController extends Controller
         }
        // dd($request->all());
         $iteration = -1;
-        $usernames =[];
-        foreach($request->username as $username) {//shiko te gjithe usernamet e shtypur ne forme dhe futi ne vargun usernames
-            if ($username != null) {
-                $usernames[] = $username;
+        $ids =[]; //merr ne varg te gjitha id e shtypur ne forme
+        foreach($request->id as $id) {//shiko te gjithe usernamet e shtypur ne forme dhe futi ne vargun ids
+            if ($id != null) {
+                $ids[] = $id;
             }
         }
-        $usernames[] = $user->username; // merr usernamin e perdoruesit te kyqur
-        if (count($usernames) !== count(array_unique($usernames))){ //nese vlerat perseriten
+        $ids[] = $user->id; // merr id e perdoruesit te kyqur
+        if (count($ids) !== count(array_unique($ids))){ //nese vlerat perseriten
             session()->flash('duplicate_username', 'Nuk mund të jenë 2 autorë të njejtë.');
             return back();
             }
@@ -80,22 +81,22 @@ class PostsController extends Controller
        $post = Post::create($input); //krijo postimin
 
         $iteration = -1;
-        foreach ($request->username as $username){ //krijo postimet per userat tjere
+        foreach ($request->id as $id){ //krijo postimet per userat tjere
             $iteration++;
-                if ($username == null){
+                if ($id == null){
                     if ($request->author[$iteration] != null){
                        $user = User::create(['name'=>$request->author[$iteration]]);
                        $user->posts()->attach($post->id);
                     }
                 }
-                if ($username != null) {
-                $user = User::where('username', $username)->first();
+                if ($id != null) {
+                $user = User::where('id', $id)->first();
 //                $user_id = $user->id;
                 $user->posts()->attach($post->id);
             }
         }
 
-        auth()->user()->attach($post->id);//krijo postim per vete
+        auth()->user()->posts()->attach($post->id);//krijo postim per vete
         session()->flash('added_post', 'Postimi u krijua me sukses.');
     return back();
         //dd($request->username);
@@ -114,7 +115,7 @@ class PostsController extends Controller
                 ->take(6)->get();
 
             foreach ($queries as $query) {
-                $results[] = ['id' => $query->id, 'value' => $query->name . " " . $query->surname, 'username' => $query->username]; //you can take custom values as you want
+                $results[] = ['id' => $query->id, 'value' => $query->name . " " . $query->surname]; //you can take custom values as you want
             }
             return response()->json($results);
         }
