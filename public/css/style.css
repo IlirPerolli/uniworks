@@ -708,6 +708,107 @@ label:focus,
 
 
 
+/* Search Header */
+.search-header {
+    margin-top: 175px;
+}
+
+.logo-text i {
+    color: #006fa5;
+}
+
+.main-search-bar {
+    width: 60%;
+    border: 0;
+    border-bottom: 3px solid #006fa5;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+
+/* Search Content */
+.search-content {
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+.searched-result-text {
+    margin-top: 75px;
+}
+
+.searched-user-profile {
+    text-align: center;
+    border: 0;
+    margin-top: 40px;
+    width: 130px;
+}
+
+.searched-user-profile img {
+    border-radius: 50%;
+}
+
+.searched-user-profile p {
+    font-size: 12px;
+}
+
+.searched-user-profile-content {
+    padding: 0px;
+}
+
+.searched-user-profile-content h6 {
+    margin-top: 15px;
+}
+
+.searched-user-profile-content p {
+    margin-top: -15px;
+}
+
+.searched-user-profile-content a {
+    color: black;
+}
+
+.searched-user-profile-content a:hover {
+    color: #006fa5;
+}
+
+
+@media screen and (max-width: 768px) {
+    .searched-user-profile {
+        margin: auto;
+        margin-top: 40px;
+        width: 130px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .searched-user-profile-col {
+        margin: auto;
+        margin-top: 40px;
+        width: max-content;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .searched-user-profile-col {
+        margin: auto;
+        margin-top: 40px;
+        width: max-content;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .searched-result-text h4 {
+        font-size: 20px;
+    }
+    .main-search-bar {
+        width: 90%
+    }
+}
+
+
+
+
 
 
 
