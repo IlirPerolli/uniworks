@@ -92,10 +92,10 @@
         var search_term = $('#q').val();
         //alert(value);
         if (value == 'posts'){
-            window.location.href = '/search/posts/?q='+search_term;
+            window.location.href = '/search/posts?q='+search_term;
         }
         else if (value == 'users'){
-            window.location.href = '/search/users/?q='+search_term;
+            window.location.href = '/search/users?q='+search_term;
         }
         });
     });

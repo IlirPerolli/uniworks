@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserStorePostRequest;
 use App\Models\Category;
 use App\Models\File;
+use App\Models\Photo;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class PostsController extends Controller
      */
     public function store(UserStorePostRequest $request)
     {
-       // dd($request->all());
+//        dd($request->all());
         $user = auth()->user();
         $input = $request->all();
 
@@ -105,17 +106,34 @@ class PostsController extends Controller
     public function autocomplete(Request $request)
     {
         $term = $request->term;
+        $separated_input = preg_split('/(?<=\w)\b\s*[!?.]*/', $term, -1, PREG_SPLIT_NO_EMPTY);
         if (strlen($term)>=3) {
-            $queries = DB::table('users') //Your table name
-            ->where('name', 'like', '%' . $term . '%') //Your selected row
-            ->orWhere('surname', 'like', "%{$term}%")
-                ->orWhere('username', 'like', "%{$term}%")
-                ->orWhere('slug', 'like', "%{$term}%")
-                ->orWhere('email', 'like', "%{$term}%")->orderBy('name', 'ASC')
-                ->take(6)->get();
+            $users_by_sentence = User::Where(DB::raw('CONCAT(name, " ", surname)'), 'like', '%' . $term . '%')->orWhere(DB::raw('CONCAT(surname, " ", name)'), 'like', '%' . $term . '%')->orWhere(DB::raw('CONCAT(name)'), 'like', '%' . $term . '%')->orderBy('name','ASC');//kerko me fjali
+            $users_by_word = User::where(function ($q) use ($separated_input) {
+                foreach ($separated_input as $input) {
+                    if (strlen($input)<2){continue;}
+                    $q->orWhere('name', 'like', "%{$input}%")
+                        ->orWhere('surname', 'like', "%{$input}%")
+                        ->orWhere('username', 'like', "%{$input}%")
+                        ->orWhere('slug', 'like', "%{$input}%")
+                        ->orWhere('email', 'like', "%{$input}%")->orderBy('name','ASC');
+                }
+            });
+            $users_from_search = $users_by_sentence->union($users_by_word)->take(6)->get();
 
-            foreach ($queries as $query) {
-                $results[] = ['id' => $query->id, 'value' => $query->name . " " . $query->surname]; //you can take custom values as you want
+//            $queries = DB::table('users') //Your table name
+//            ->where('name', 'like', '%' . $term . '%')
+//            ->orWhere('surname', 'like', "%{$term}%")
+//                ->orWhere('username', 'like', "%{$term}%")
+//                ->orWhere('slug', 'like', "%{$term}%")
+//                ->orWhere('email', 'like', "%{$term}%")->orderBy('name', 'ASC')
+//                ->take(6)->get();
+
+            foreach ($users_from_search as $query) {
+                $photo = $query->photo_id;
+                $photo = Photo::find($photo);
+                $photo = $photo->name;
+                $results[] = ['id' => $query->id, 'value' => $query->name . " " . $query->surname, 'photo'=>$photo]; //you can take custom values as you want
             }
             return response()->json($results);
         }

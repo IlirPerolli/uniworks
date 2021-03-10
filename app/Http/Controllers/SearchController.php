@@ -20,7 +20,6 @@ class SearchController extends Controller
         $input = $request->q;
         // $separated_input = preg_split('/\s+/', $input, -1, PREG_SPLIT_NO_EMPTY);
         $separated_input = preg_split('/(?<=\w)\b\s*[!?.]*/', $input, -1, PREG_SPLIT_NO_EMPTY);
-
         if ($input!='') {
             if (strlen($input)<=2){
                 session()->flash('min_length_input', "Ju lutem jepni nje fjale me te gjate");

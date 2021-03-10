@@ -149,6 +149,7 @@
         {
             $('#author1').val(ui.item.value);
             $('#id1').val(ui.item.id);
+            return false;
         }
     });
     $('#author2').autocomplete({
@@ -181,6 +182,26 @@
             $('#id4').val(ui.item.id);
         }
     });
+    $("#author1").data("ui-autocomplete")._renderItem = function (ul, item) {
+        return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+            .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
+            .appendTo(ul);
+    };
+    $("#author2").data("ui-autocomplete")._renderItem = function (ul, item) {
+        return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+            .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
+            .appendTo(ul);
+    };
+    $("#author3").data("ui-autocomplete")._renderItem = function (ul, item) {
+        return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+            .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
+            .appendTo(ul);
+    };
+    $("#author4").data("ui-autocomplete")._renderItem = function (ul, item) {
+        return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+            .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
+            .appendTo(ul);
+    };
 
 </script>
 @endsection
