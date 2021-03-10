@@ -183,22 +183,23 @@
         }
     });
     $("#author1").data("ui-autocomplete")._renderItem = function (ul, item) {
-        return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+        // return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+        return $('<li/>', {'data-value': item.value}).append($('<a/>')
             .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
             .appendTo(ul);
     };
     $("#author2").data("ui-autocomplete")._renderItem = function (ul, item) {
-        return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+        return $('<li/>', {'data-value': item.value}).append($('<a/>')
             .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
             .appendTo(ul);
     };
     $("#author3").data("ui-autocomplete")._renderItem = function (ul, item) {
-        return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+        return $('<li/>', {'data-value': item.value}).append($('<a/>')
             .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
             .appendTo(ul);
     };
     $("#author4").data("ui-autocomplete")._renderItem = function (ul, item) {
-        return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
+        return $('<li/>', {'data-value': item.value}).append($('<a/>')
             .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
             .appendTo(ul);
     };

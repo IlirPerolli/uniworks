@@ -52,18 +52,18 @@ class PostsController extends Controller
             return back();
         }
        // dd($request->all());
-        $iteration = -1;
-        $ids =[]; //merr ne varg te gjitha id e shtypur ne forme
-        foreach($request->id as $id) {//shiko te gjithe usernamet e shtypur ne forme dhe futi ne vargun ids
-            if ($id != null) {
-                $ids[] = $id;
-            }
-        }
-        $ids[] = $user->id; // merr id e perdoruesit te kyqur
-        if (count($ids) !== count(array_unique($ids))){ //nese vlerat perseriten
-            session()->flash('duplicate_username', 'Nuk mund të jenë 2 autorë të njejtë.');
-            return back();
-            }
+//        $iteration = -1;
+//        $ids =[]; //merr ne varg te gjitha id e shtypur ne forme
+//        foreach($request->id as $id) {//shiko te gjithe usernamet e shtypur ne forme dhe futi ne vargun ids
+//            if ($id != null) {
+//                $ids[] = $id;
+//            }
+//        }
+//        $ids[] = $user->id; // merr id e perdoruesit te kyqur
+//        if (count($ids) !== count(array_unique($ids))){ //nese vlerat perseriten
+//            session()->flash('duplicate_username', 'Nuk mund të jenë 2 autorë të njejtë.');
+//            return back();
+//            }
 
 
         if ($file = $request->file('file_id')){ //shto filen ne storage
@@ -87,17 +87,22 @@ class PostsController extends Controller
                 if ($id == null){
                     if ($request->author[$iteration] != null){
                        $user = User::create(['name'=>$request->author[$iteration]]);
-                       $user->posts()->attach($post->id);
+                    if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+                        $user->posts()->attach($post->id);
+                    }
                     }
                 }
                 if ($id != null) {
                 $user = User::where('id', $id)->first();
 //                $user_id = $user->id;
-                $user->posts()->attach($post->id);
+                    if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+                        $user->posts()->attach($post->id);
+                    }
             }
         }
-
-        auth()->user()->posts()->attach($post->id);//krijo postim per vete
+        if (!auth()->user()->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+            auth()->user()->posts()->attach($post->id);//krijo postim per vete
+        }
         session()->flash('added_post', 'Postimi u krijua me sukses.');
     return back();
         //dd($request->username);
@@ -133,7 +138,7 @@ class PostsController extends Controller
                 $photo = $query->photo_id;
                 $photo = Photo::find($photo);
                 $photo = $photo->name;
-                $results[] = ['id' => $query->id, 'value' => $query->name . " " . $query->surname, 'photo'=>$photo]; //you can take custom values as you want
+                $results[] = ['id' => $query->id, 'value' => $query->name . " " . $query->surname, 'photo'=>$photo];
             }
             return response()->json($results);
         }
