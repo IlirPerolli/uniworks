@@ -22,7 +22,7 @@ class Post extends Model
         ];
     }
     use HasFactory;
-    protected $fillable = ['file_id','title','abstract','category_id', 'resource', 'views', 'slug'];
+    protected $fillable = ['file_id','title','abstract','category_id', 'resource', 'year','views', 'slug'];
     public function user(){
         return $this->belongsToMany(User::class)->withTimestamps();
     }

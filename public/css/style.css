@@ -710,7 +710,7 @@ label:focus,
 
 /* Search Header */
 .search-header {
-    margin-top: 175px;
+    margin-top: 150px;
 }
 
 .logo-text i {
@@ -806,7 +806,87 @@ label:focus,
     }
 }
 
+/* SEARCH POSTS */
 
+
+/* ------------ NEW -------------- */
+
+/* Posts Content */
+#posts-container {
+    margin-top: 50px;
+}
+
+.preferences-options {
+    border: 0;
+    border-bottom: 3px solid #006fa5;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+#posts-preferences {
+    padding-left: 0;
+    padding-right: 50px;
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    #posts-preferences {
+        padding: 25px;
+    }
+}
+
+#posts-content {
+    text-align: left;
+    margin-bottom: 150px;
+}
+
+#posts-content a {
+    color: black;
+}
+
+#posts-content a:hover {
+    color: #006fa5;
+}
+
+#posts-content p {
+    text-align: left;
+}
+
+.posts-col {
+    margin-top: 30px;
+    border-bottom: 2px solid #006fa5; /* ndash hekja */
+    padding-bottom: 25px; /* ndash hekja */
+}
+
+.post-description {
+    font-size: 12px;
+}
+
+.save-preferences {
+    text-align: center;
+}
+
+.save-preferences-btn {
+    background-color: #006fa5;
+    color: white;
+    width: 100%;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+
+.save-preferences-btn h6 {
+    margin: auto;
+    padding: 2px;
+}
+
+.save-preferences-btn:hover {
+    background-color: #006ea5dc;
+    color: white;
+}
+#custom_year_inputs{
+    display: none
+;
+}
 
 
 

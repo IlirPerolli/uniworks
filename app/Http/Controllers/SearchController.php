@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
@@ -22,8 +24,8 @@ class SearchController extends Controller
         $separated_input = preg_split('/(?<=\w)\b\s*[!?.]*/', $input, -1, PREG_SPLIT_NO_EMPTY);
         if ($input!='') {
             if (strlen($input)<=2){
-                session()->flash('min_length_input', "Ju lutem jepni nje fjale me te gjate");
-                return redirect()->route('search.users');
+                session()->flash('min_length_input', "Ju lutem jepni një fjalë më të gjatë");
+                return redirect()->route('index');
             }
 
             //Metoda tani duke i ndare fjalet e fjalise edhe duke kerkuar bazuar ne ato fjale
@@ -44,12 +46,66 @@ class SearchController extends Controller
             //Kjo appends per te marrur edhe get requestat tjere ne get metoden
             return view('search.users', compact('users_from_search',  'users_count'));
 
-//                session()->flash('user_not_found', "Nuk u gjet asnjë përdorues");
-//                return redirect()->route('search.users');
         }
 
-        return view('search.users');
+        return redirect()->route('index'); //nese inputi eshte i zbrazet
     }
+
+        public function posts(Request $request)
+        {
+            $input = $request->q;
+            if ($request->order == 'asc'){$order = "asc";}
+            else if ($request->order == 'desc'){$order = "desc";}
+            else{$order = "desc";}
+
+            if (isset($request->startyear) && isset($request->endyear)){
+                $start_year = $request->startyear;
+                $end_year = $request->endyear;
+            }
+            else{
+                $start_year = 1900;
+                $end_year = 2021;
+            }
+            if (isset($request->year)){
+                $year = $request->year;
+            }
+            else{
+                $year = 1900;
+            }
+
+
+
+            $separated_input = preg_split('/(?<=\w)\b\s*[!?.]*/', $input, -1, PREG_SPLIT_NO_EMPTY);
+
+            if ($input!='') {
+                if (strlen($input)<=2){
+                    session()->flash('min_length_input', "Ju lutem jepni nje fjale me te gjate");
+                    return redirect()->route('index');
+                }
+
+                $posts_by_sentence = Post::Where('title', 'like', "%{$input}%")->orderBy('title','ASC');//kerko me fjali
+                $posts_by_word = Post::Where(function ($q) use ($separated_input) { //kerko me fjale
+                    foreach ($separated_input as $input) {
+                        if (strlen($input)<2){
+                            continue;
+                        }
+                        $q->orWhere('title', 'like', "%{$input}%")
+                            ->orWhere('slug', 'like', "%{$input}%")
+                            ->orderBy('title','ASC');
+                    }
+                });
+
+                        $posts = $posts_by_sentence->whereBetween('year',[$start_year, $end_year])->where('year','>=',$year)->union($posts_by_word->whereBetween('year',[$start_year, $end_year])->where('year','>=',$year))->orderBy('id',$order)->paginate(10)->appends(request()->query());
+                $posts_count = $posts->count();
+                //Kjo appends per te marrur edhe get requestat tjere ne get metoden
+
+                return view('search.posts', compact('posts','posts_count'));
+
+            }
+            return redirect()->route('index'); //nese inputi eshte i zbrazet
+
+            }
+
 
     public function index()
     {

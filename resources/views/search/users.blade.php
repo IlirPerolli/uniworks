@@ -1,11 +1,10 @@
 @extends('layouts.index')
 
 @section('title')
-    <title>Kërko përdorues</title>
-@endsection
+    <title>Kërko përdorues - {{$_GET['q']}}</title>@endsection
 
 @section('content')
-@include('includes.search_form')
+@include('includes.search_form_for_users')
 
 
 

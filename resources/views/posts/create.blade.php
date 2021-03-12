@@ -89,6 +89,13 @@
                     <span style="color:red">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label for="resource">Viti</label>
+                    <input type="number" min="1900" max="2021" class="form-control" id="year" value="{{ old('year') }}" name="year" placeholder="Viti i publikimit" autocomplete="off">
+                    @error('year')
+                    <span style="color:red">{{ $message }}</span>
+                    @enderror
+                </div>
 
                     <div class="form-row">
                         <div class="col-sm-12 col-md-6">

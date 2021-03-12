@@ -8,6 +8,9 @@
     <div class="logo-text">
         <h1>Uniworks</h1>
     </div>
+    @if(session('min_length_input'))
+        <h6 style="color:red; margin-left: 15px">{{session('min_length_input')}}</h6>
+    @endif
         <form>
         <i class="fas fa-search"></i><input class="main-search-bar" type="text" id="q" name="q" placeholder="Kërko..." autocomplete="off">
 

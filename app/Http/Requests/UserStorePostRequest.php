@@ -29,6 +29,7 @@ class UserStorePostRequest extends FormRequest
 //            'author'=>'max:256|regex:/^[\pL\s\-]+$/u| min:0',
 //            'author.*'=>'max:256|regex:/^[\pL\s\-]+$/u|min:0',
             'abstract'=>'required|max:4000|min:2',
+            'year'=>'required|numeric|min:1900|max:2021',
             'resource'=>'max:2000',
             'category_id' => 'required|integer',
         ];
@@ -40,8 +41,10 @@ class UserStorePostRequest extends FormRequest
             'title.required'=>'Titulli duhet të plotësohet.',
             'title.max'=>'Titulli duhet te kete maksimum 200 karaktere.',
             'title.min'=>'Titulli duhet te kete minimum 2 karaktere.',
-            'author.*.max'=>'Autori duhet te kete maksimum 256 karaktere.',
-            'author.*.regex'=>'Autori duhet te speciale.',
+            'year.required'=>'Viti duhet të plotësohet.',
+            'year.min'=>'Viti i publikimit duhet të jetë me i madh se 1900.',
+            'year.max'=>'Viti i publikimit duhet të jetë me i vogel se 2021.',
+            'year.numeric'=>'Viti duhet të jetë numër.',
 
             'abstract.required'=>'Abstrakti duhet të plotësohet.',
             'abstract.max'=>'Titulli duhet te kete maksimum 4000 karaktere.',
