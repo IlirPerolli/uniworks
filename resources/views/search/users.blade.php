@@ -28,7 +28,7 @@
                         <a href="#">
                             <h6 class="card-title">{{$user->name. " ". $user->surname}}</h6>
                         </a>
-                        <p class="text-muted">Universiteti bërllog</p>
+                        <p class="text-muted">Universiteti</p>
                     </div>
                 </div>
             </div>

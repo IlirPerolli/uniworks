@@ -26,15 +26,13 @@
                             @else
                                 <a href="#">{{$user->name . " ". $user->surname}}</a>
                             @endif
-                            @if(!$loop->last),
+                                @if(!$loop->last),
                                 @endif
-
-
                         @endforeach
-
                          </p>
                     <p class="post-description">{{Str::limit($post->abstract,500)}}</p>
-                </div>@endforeach
+                </div>
+                        @endforeach
                     @else
                         <h6 style="color:red;text-align: center">Nuk u gjetën postime.</h6>
             @endif
@@ -48,8 +46,6 @@
                             </nav>
                         @endif
                     @endif
-
-
             </div>
 
         </div>

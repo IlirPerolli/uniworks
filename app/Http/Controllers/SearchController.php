@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -54,6 +55,7 @@ class SearchController extends Controller
         public function posts(Request $request)
         {
             $input = $request->q;
+            $categories = Category::all();
             if ($request->order == 'asc'){$order = "asc";}
             else if ($request->order == 'desc'){$order = "desc";}
             else{$order = "desc";}
@@ -99,7 +101,7 @@ class SearchController extends Controller
                 $posts_count = $posts->count();
                 //Kjo appends per te marrur edhe get requestat tjere ne get metoden
 
-                return view('search.posts', compact('posts','posts_count'));
+                return view('search.posts', compact('posts','posts_count', 'categories'));
 
             }
             return redirect()->route('index'); //nese inputi eshte i zbrazet
