@@ -34,7 +34,7 @@
             <select class="preferences-options form-control" name="category" id="category">
                 <option value="" >Çdo kategori</option>
                     @foreach($categories as $category)
-                        <option value="{{$category->id}}" @if(isset($_GET['category'])){{ $_GET['category'] == $category->id ? 'selected' : ''}}@endif >{{$category->name}}</option>
+                        <option value="{{$category->name}}" @if(isset($_GET['category'])){{ $_GET['category'] == $category->name ? 'selected' : ''}}@endif >{{$category->name}}</option>
                     @endforeach
             </select>
         </div>
@@ -76,6 +76,9 @@
         if (selectedValue == 'custom' && (startyear!='') && (endyear!='') ){
 
             $('#sort-posts-by-year').prop('disabled',true);
+        }
+        if (selectedValue == ''){
+            $('#sort-posts-by-year').prop('disabled', true);
         }
         if (category_value == ''){
             $('#category').prop('disabled',true);

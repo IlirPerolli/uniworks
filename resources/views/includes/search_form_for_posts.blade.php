@@ -9,6 +9,7 @@
                 @if (isset($_GET['year']))<input type="hidden" name="year" value="{{$_GET['year']}}">@endif
                 @if (isset($_GET['startyear']))<input type="hidden" name="startyear" value="{{$_GET['startyear']}}">@endif
                 @if (isset($_GET['endyear']))<input type="hidden" name="endyear" value="{{$_GET['endyear']}}">@endif
+                @if (isset($_GET['category']))<input type="hidden" name="category" value="{{$_GET['category']}}">@endif
             </form>
 
         </div>

@@ -66,13 +66,12 @@ class SearchController extends Controller
             }
             else{
                 $start_year = 1900;
-                $end_year = 2021;
-            }
-            if (isset($request->year)){
-                $year = $request->year;
-            }
-            else{
-                $year = 1900;
+                $end_year = 2021;}
+            if (isset($request->year)){$year = $request->year;}
+            else{$year = 1900;}
+            if (isset($request->category)){
+                $category = Category::findBySlugOrFail($request->category);
+                $category = $category->id;
             }
 
 
@@ -96,8 +95,13 @@ class SearchController extends Controller
                             ->orderBy('title','ASC');
                     }
                 });
+                if (isset($request->category)) {
+                    $posts = $posts_by_sentence->whereBetween('year', [$start_year, $end_year])->where('year', '>=', $year)->where('category_id',$category)->union($posts_by_word->whereBetween('year', [$start_year, $end_year])->where('year', '>=', $year)->where('category_id',$category))->orderBy('id', $order)->paginate(10)->appends(request()->query());
+                }
+                else{
+                    $posts = $posts_by_sentence->whereBetween('year', [$start_year, $end_year])->where('year', '>=', $year)->union($posts_by_word->whereBetween('year', [$start_year, $end_year])->where('year', '>=', $year))->orderBy('id', $order)->paginate(10)->appends(request()->query());
 
-                        $posts = $posts_by_sentence->whereBetween('year',[$start_year, $end_year])->where('year','>=',$year)->union($posts_by_word->whereBetween('year',[$start_year, $end_year])->where('year','>=',$year))->orderBy('id',$order)->paginate(10)->appends(request()->query());
+                }
                 $posts_count = $posts->count();
                 //Kjo appends per te marrur edhe get requestat tjere ne get metoden
 

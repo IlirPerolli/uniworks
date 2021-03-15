@@ -34,15 +34,6 @@
                 @error('title')
                 <span style="color:red">{{ $message }}</span>
                 @enderror
-
-                <div class="form-group">
-                    <label for="abstract">Abstrakti</label>
-                    <textarea class="form-control" id="abstract" name="abstract" rows="1"
-                              placeholder="Shkruani abstraktin e artikullit...">{{old('abstract')}}</textarea>
-                </div>
-                @error('abstract')
-                <span style="color:red">{{ $message }}</span>
-                @enderror
                 <br>
                 <span> Autoret </span>
                 <div class="form-row">
@@ -79,6 +70,17 @@
                         {{session('duplicate_username')}}
                     </div>
                 @endif
+
+                <div class="form-group">
+                    <label for="abstract">Abstrakti</label>
+                    <textarea class="form-control" id="abstract" name="abstract" rows="1"
+                              placeholder="Shkruani abstraktin e artikullit...">{{old('abstract')}}</textarea>
+                    @error('abstract')
+                    <span style="color:red">{{ $message }}</span>
+                    @enderror
+
+                </div>
+
 {{--                @error('author.*')--}}
 {{--                <span style="color:red">{{ $message }}</span>--}}
 {{--                @enderror--}}
