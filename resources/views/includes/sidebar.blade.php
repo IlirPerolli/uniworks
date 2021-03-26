@@ -22,7 +22,7 @@
             <option value="custom">Custom</option>
         </select>
 
-        <div id="custom_year_inputs">
+        <div id="custom_year_inputs" style="display: none">
             <br>
         <input type="number" id="startyear" name="startyear" min="1900" max="2021" required disabled> -
         <input type="number" id="endyear" name="endyear" min="1900" max="2021" required disabled>
@@ -83,6 +83,7 @@
         if (category_value == ''){
             $('#category').prop('disabled',true);
         }
+
 
     }
 </script>

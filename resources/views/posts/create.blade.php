@@ -3,6 +3,20 @@
 @section('title')
     <title>Krijo postim</title>
 @endsection
+@section('styles')
+    <style>
+        input[type=text], input[type=number]{
+
+            height: 50px !important;
+        }
+        select{
+            height: 50px !important;
+        }
+        .form-group{
+            margin-bottom: 0px !important;
+        }
+    </style>
+@endsection
 
 @section('content')
 
@@ -33,8 +47,9 @@
                 </div>
                 @error('title')
                 <span style="color:red">{{ $message }}</span>
-                @enderror
                 <br>
+                @enderror
+
                 <span> Autoret </span>
                 <div class="form-row">
 
@@ -73,7 +88,7 @@
 
                 <div class="form-group">
                     <label for="abstract">Abstrakti</label>
-                    <textarea class="form-control" id="abstract" name="abstract" rows="1"
+                    <textarea class="form-control" id="abstract" name="abstract" rows="3"
                               placeholder="Shkruani abstraktin e artikullit...">{{old('abstract')}}</textarea>
                     @error('abstract')
                     <span style="color:red">{{ $message }}</span>
@@ -120,7 +135,11 @@
                         <div class="col-sm-12 col-md-6">
                                 <div class="form-group" id="upload-article">
                                     <label for="upload">Ngarko artikullin</label>
-                                    <input type="file" name="file_id" class="form-control-file" id="upload">
+                                    <div class='file-input' style="border:1px solid #ced4da;">
+                                        <input type='file' name="file_id">
+                                        <span class='button'>Zgjedh</span>
+                                        <span class='label' data-js-label>Zgjedhni artikullin...</span>
+                                    </div>
                                 </div>
                             @error('file_id')
                             <span style="color:red">{{ $message }}</span>
@@ -194,24 +213,45 @@
     $("#author1").data("ui-autocomplete")._renderItem = function (ul, item) {
         // return $('<li/>', {'data-value': item.value}).append($('<a/>', {href: "#"})
         return $('<li/>', {'data-value': item.value}).append($('<a/>')
-            .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
+            .append($('<img/>', {style:'margin-right:10px; border-radius:50%',width:50,height:50, src: '/images/'+item.photo})).append(item.value))
             .appendTo(ul);
     };
     $("#author2").data("ui-autocomplete")._renderItem = function (ul, item) {
         return $('<li/>', {'data-value': item.value}).append($('<a/>')
-            .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
+            .append($('<img/>', {style:'margin-right:10px; border-radius:50%',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
             .appendTo(ul);
     };
     $("#author3").data("ui-autocomplete")._renderItem = function (ul, item) {
         return $('<li/>', {'data-value': item.value}).append($('<a/>')
-            .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
+            .append($('<img/>', {style:'margin-right:10px; border-radius:50%',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
             .appendTo(ul);
     };
     $("#author4").data("ui-autocomplete")._renderItem = function (ul, item) {
         return $('<li/>', {'data-value': item.value}).append($('<a/>')
-            .append($('<img/>', {style:'margin-right:10px',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
+            .append($('<img/>', {style:'margin-right:10px; border-radius:50%',width:50,height:50,src: '/images/'+item.photo})).append(item.value))
             .appendTo(ul);
     };
 
 </script>
+    <script>
+        var inputs = document.querySelectorAll('.file-input')
+
+        for (var i = 0, len = inputs.length; i < len; i++) {
+            customInput(inputs[i])
+        }
+
+        function customInput (el) {
+            const fileInput = el.querySelector('[type="file"]')
+            const label = el.querySelector('[data-js-label]')
+
+            fileInput.onchange =
+                fileInput.onmouseout = function () {
+                    if (!fileInput.value) return
+
+                    var value = fileInput.value.replace(/^.*[\\\/]/, '')
+                    el.className += ' -zgjedhur'
+                    label.innerText = value
+                }
+        }
+    </script>
 @endsection

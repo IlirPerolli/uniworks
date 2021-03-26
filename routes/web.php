@@ -39,3 +39,5 @@ Route::middleware('auth',)->group(function(){
 Route::get('/category/{category}','App\Http\Controllers\CategoriesController@show')->name('category.show');
 Route::get('/search/users','App\Http\Controllers\SearchController@users')->name('search.users');
 Route::get('/search/posts','App\Http\Controllers\SearchController@posts')->name('search.posts');
+Route::get('/{user}','App\Http\Controllers\UserProfileController@show')->name('user.show');
+

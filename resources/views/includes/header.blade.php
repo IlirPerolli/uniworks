@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
           integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
           crossorigin="anonymous" />
-
+@yield('styles')
 </head>
 
 
@@ -78,7 +78,7 @@
                             </li>
 
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="user-profile-btn nav-link" title="Profili" href="#"><svg
+                                <a class="user-profile-btn nav-link" title="Profili" href="{{route('user.show', auth()->user()->slug)}}"><svg
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
