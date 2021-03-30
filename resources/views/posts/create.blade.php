@@ -50,7 +50,7 @@
                 <br>
                 @enderror
 
-                <span> Autoret </span>
+               <div style="margin-bottom: -20px; margin-top: 10px">Autoret</div>
                 <div class="form-row">
 
                     <div class="col-sm-12 col-md-6">
@@ -135,12 +135,16 @@
                         <div class="col-sm-12 col-md-6">
                                 <div class="form-group" id="upload-article">
                                     <label for="upload">Ngarko artikullin</label>
+                                    <div style="width: 100%;  word-break: break-all">
                                     <div class='file-input' style="border:1px solid #ced4da;">
+
                                         <input type='file' name="file_id">
                                         <span class='button'>Zgjedh</span>
-                                        <span class='label' data-js-label>Zgjedhni artikullin...</span>
-                                    </div>
-                                </div>
+
+                                            <span class='label' data-js-label >Zgjedhni artikullin...</span>
+                                            </div>
+
+                                    </div></div>
                             @error('file_id')
                             <span style="color:red">{{ $message }}</span>
                             @enderror
@@ -249,7 +253,7 @@
                     if (!fileInput.value) return
 
                     var value = fileInput.value.replace(/^.*[\\\/]/, '')
-                    el.className += ' -zgjedhur'
+                    el.className += ' -chosen'
                     label.innerText = value
                 }
         }

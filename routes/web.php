@@ -34,6 +34,8 @@ Route::get('autocomplete', 'App\Http\Controllers\PostsController@autocomplete')-
 Route::middleware('auth',)->group(function(){
     Route::get('/post/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
     Route::post('/post/store', 'App\Http\Controllers\PostsController@store')->name('post.store');
+    Route::get('/user/changePassword', 'App\Http\Controllers\UserChangePasswordController@index')->name('user.password.edit');
+    Route::patch('/user/changePassword/update', 'App\Http\Controllers\UserChangePasswordController@update')->name('user.password.update');
 });
 
 Route::get('/category/{category}','App\Http\Controllers\CategoriesController@show')->name('category.show');

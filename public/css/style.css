@@ -676,7 +676,7 @@ label:focus,
 
 .file-input > .label {
     color: #333;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     opacity: .3;
 }
 
@@ -920,6 +920,11 @@ label:focus,
     border-bottom: 2px solid #006fa5;
     padding-bottom: 25px;
 }
+.posts-col svg {
+    width: 22px;
+    margin-bottom: 5px;
+    margin-right: 6px;
+}
 
 .post-description {
     font-size: 12px;
@@ -976,8 +981,14 @@ label:focus,
     padding-left: 40px;
 }
 
-#user-info i {
-    color: #006fa5;
+#user-info svg {
+    margin-bottom: 3px;
+    margin-right: 8px;
+}
+@media screen and (max-width: 300px) {
+    #user-info svg {
+        width: 2px;
+    }
 }
 
 #user-info p {
@@ -987,7 +998,10 @@ label:focus,
 #user-info h3, p {
     text-align: left;
 }
-
+#user-info svg {
+    width: 25px;
+    color: #006fa5;
+}
 .user-profile-content-articles {
     margin-top: 100px;
 }
@@ -1047,6 +1061,245 @@ label:focus,
 
 
 
+/* User Edit Profile */
+.user-edit-profile {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+#edit-profile-side a {
+    color: black;
+    text-decoration: none;
+}
+
+#edit-profile-side svg {
+    width: 25px;
+    margin-bottom: 3px;
+    color: #006fa5;
+}
+
+.edit-profile-side-text {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.edit-profile-text {
+    font-size: 40px;
+    text-align: left;
+}
+
+#edit-profile-user-photo img {
+    width: 20%;
+    border-radius: 50%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/*.edit-profile-form-fields .form-control {*/
+/*    border-radius: 10px;*/
+/*    border: 3px solid rgb(185, 185, 185);*/
+/*}*/
+
+#edit-profile-fields {
+    max-width: 500px;
+}
+
+
+.edit-profile-buttons {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cancel-button {
+    border: 2px solid #006fa5;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+
+.cancel-button h5 {
+    color: #006fa5;
+    margin: auto;
+    padding: 5px;
+}
+
+.cancel-button:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.save-button {
+    border: 2px solid #006fa5;
+    background-color: #006fa5;
+    border-radius: 30px;
+}
+
+.save-button h5 {
+    color: white;
+    margin: auto;
+    padding: 5px;
+}
+
+.save-button:hover {
+    background-color: #006ea5dc;
+    color: white;
+}
+
+
+/* User Edit Account */
+.user-edit-account {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+#edit-account-side a {
+    color: black;
+    text-decoration: none;
+}
+
+#edit-account-side svg {
+    width: 25px;
+    margin-bottom: 3px;
+    color: #006fa5;
+}
+
+.edit-account-side-text {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.edit-account-text {
+    font-size: 40px;
+    text-align: left;
+}
+
+/*.edit-account-form-fields .form-control {*/
+/*    border-radius: 10px;*/
+/*    border: 3px solid rgb(185, 185, 185);*/
+/*}*/
+
+#edit-account-fields {
+    max-width: 500px;
+}
+
+#edit-account-emai-field {
+    margin-top: 50px;
+}
+
+.user-link-text {
+    font-size: 10px;
+    color: gray;
+}
+
+.edit-account-gender {
+    margin-top: 22px;
+}
+
+.delete-account-text h6 {
+    margin-top: 25px;
+    color: red;
+}
+
+.delete-account-text a:hover {
+    text-decoration: none;
+}
+
+/* .delete-account-text svg {
+    color: black;
+    width: 18px;
+    margin-left: 5px;
+    margin-bottom: 3px;
+} */
+
+.edit-account-buttons {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cancel-button {
+    border: 2px solid #006fa5;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+
+.cancel-button h5 {
+    color: #006fa5;
+    margin: auto;
+    padding: 5px;
+}
+
+.cancel-button:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.save-button {
+    border: 2px solid #006fa5;
+    background-color: #006fa5;
+    border-radius: 30px;
+}
+
+.save-button h5 {
+    color: white;
+    margin: auto;
+    padding: 5px;
+}
+
+.save-button:hover {
+    background-color: #006ea5dc;
+    color: white;
+}
+
+
+
+/* User Change Password */
+#change-password-fields {
+    max-width: 500px;
+}
+
+#change-password-field {
+    margin-top: 50px;
+}
+
+.change-password-buttons {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cancel-button {
+    border: 2px solid #006fa5;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+
+/*.change-password-form-fields .form-control {*/
+/*    border-radius: 10px;*/
+/*    border: 3px solid rgb(185, 185, 185);*/
+/*}*/
+
+.cancel-button h5 {
+    color: #006fa5;
+    margin: auto;
+    padding: 5px;
+}
+
+.cancel-button:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.save-button {
+    border: 2px solid #006fa5;
+    background-color: #006fa5;
+    border-radius: 30px;
+}
+
+.save-button h5 {
+    color: white;
+    margin: auto;
+    padding: 5px;
+}
+
+.save-button:hover {
+    background-color: #006ea5dc;
+    color: white;
+}
 
 /* -------------------- NAVBAR -------------------------------- */
 
