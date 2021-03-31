@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body" id="user-info">
-                                    <h3 class="card-title">{{$user->name . " " . $user->surname}} @if (auth()->check()) @if (auth()->user()->slug == $user->slug)<a href="{{route('user.password.edit')}}"><svg
+                                    <h3 class="card-title">{{$user->name . " " . $user->surname}} @if (auth()->check()) @if (auth()->user()->slug == $user->slug)<a href="{{route('user.edit')}}"><svg
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -41,7 +41,7 @@
                                                   clip-rule="evenodd" />
                                             <path
                                                 d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
-                                        </svg>Universiteti i Gjakovës "Fehmi Agani"</p>
+                                        </svg>{{$user->university->name}}</p>
                                     <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                             <path
                                                 d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />

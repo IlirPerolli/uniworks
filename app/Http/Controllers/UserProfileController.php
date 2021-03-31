@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserEditRequest;
+use App\Models\Photo;
+use App\Models\University;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserProfileController extends Controller
 {
@@ -12,6 +16,38 @@ class UserProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function autocomplete(Request $request)
+    {
+        $term = $request->term;
+        $separated_input = preg_split('/(?<=\w)\b\s*[!?.]*/', $term, -1, PREG_SPLIT_NO_EMPTY);
+        if (strlen($term)>=3) {
+            $university_by_sentence = University::Where(DB::raw('name'), 'like', '%' . $term . '%')->orderBy('name','ASC');//kerko me fjali
+            $university_by_word = University::where(function ($q) use ($separated_input) {
+                foreach ($separated_input as $input) {
+                    if (strlen($input)<2){continue;}
+                    $q->orWhere('name', 'like', "%{$input}%")
+                     ->orderBy('name','ASC');
+                }
+            });
+            $universities_from_search = $university_by_sentence->union($university_by_word)->take(6)->get();
+
+//            $queries = DB::table('users') //Your table name
+//            ->where('name', 'like', '%' . $term . '%')
+//            ->orWhere('surname', 'like', "%{$term}%")
+//                ->orWhere('username', 'like', "%{$term}%")
+//                ->orWhere('slug', 'like', "%{$term}%")
+//                ->orWhere('email', 'like', "%{$term}%")->orderBy('name', 'ASC')
+//                ->take(6)->get();
+
+            foreach ($universities_from_search as $query) {
+
+                $results[] = ['id' => $query->id, 'value' => $query->name];
+            }
+            return response()->json($results);
+        }
+    }
+
+
     public function index()
     {
         //
@@ -57,9 +93,10 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = auth()->user();
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -69,9 +106,18 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserEditRequest $request)
     {
-        //
+        $user = auth()->user();
+        $inputs = $request->all();
+
+        if ($request->university_id == null){
+            $university = University::create(['name'=>$request->university]);
+            $inputs['university_id'] = $university->id;
+        }
+        $user->update($inputs);
+        session()->flash('updated_user', 'Profili u ndryshua me sukses.');
+        return back();
     }
 
     /**

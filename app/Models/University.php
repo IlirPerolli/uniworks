@@ -18,7 +18,7 @@ class University extends Model
     {
         return [
             'slug' => [
-                'source' => 'username',
+                'source' => 'name',
                 'onUpdate'=> true,
             ]
         ];

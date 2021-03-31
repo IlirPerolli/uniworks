@@ -41,6 +41,9 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::class);
     }
+    public function university(){
+        return $this->belongsTo(University::class);
+    }
     public function isAdmin(){
         if ($this->role->name == "administrator"){
             return true;

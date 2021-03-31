@@ -22,25 +22,7 @@
     <div class="user-edit-account">
         <div class="container">
             <div class="row">
-                <div class="col-md-4" id="edit-account-side">
-                    <a href="userEditProfile.html">
-                        <h2 class="edit-profile-side-text">Edito profilin</h2>
-                    </a>
-
-                    <!-- <a href="userEditAccount.html">
-                        <h2 class="edit-account-side-text">Llogaria juaj</h2>
-                    </a> -->
-
-                    <a href="userChangePassword.html">
-                        <h2 class="edit-profile-side-text">Ndrysho fjalëkalimin
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </h2>
-                    </a>
-                </div>
+                @include('includes.edit_profile_sidebar')
 
 
                 <div class="col-md-8" id="change-password-fields">

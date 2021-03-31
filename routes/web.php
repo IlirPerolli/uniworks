@@ -31,11 +31,14 @@ Route::get('admin/category/create','App\Http\Controllers\CategoriesController@cr
 });
 
 Route::get('autocomplete', 'App\Http\Controllers\PostsController@autocomplete')->name('autocomplete');
+Route::get('/user/university/autocomplete', 'App\Http\Controllers\UserProfileController@autocomplete')->name('user.university.autocomplete');
 Route::middleware('auth',)->group(function(){
     Route::get('/post/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
     Route::post('/post/store', 'App\Http\Controllers\PostsController@store')->name('post.store');
     Route::get('/user/changePassword', 'App\Http\Controllers\UserChangePasswordController@index')->name('user.password.edit');
     Route::patch('/user/changePassword/update', 'App\Http\Controllers\UserChangePasswordController@update')->name('user.password.update');
+    Route::get('/user/edit','App\Http\Controllers\UserProfileController@edit')->name('user.edit');
+    Route::patch('/user/update','App\Http\Controllers\UserProfileController@update')->name('user.update');
 });
 
 Route::get('/category/{category}','App\Http\Controllers\CategoriesController@show')->name('category.show');
