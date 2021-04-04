@@ -636,9 +636,25 @@ label:focus,
 .form-group label {
     margin-top: 10px;
 }
+/* User profile uploading*/
+
+
+.upload-photo-input {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 5px;
+    position: absolute;
+    width: 1px;
+}
 
 
 /*    UPLOADING FILE     */
+
+
+
 .file-input {
     display: inline-block;
     text-align: left;
@@ -1062,6 +1078,10 @@ label:focus,
 
 
 /* User Edit Profile */
+#remove-photo-link{
+    color: #dc3545;margin-left: 20px; margin-top:-60px
+}
+
 .user-edit-profile {
     margin-top: 150px;
     margin-bottom: 150px;
@@ -1089,10 +1109,10 @@ label:focus,
 }
 
 #edit-profile-user-photo img {
-    width: 20%;
+    width: 30%;
     border-radius: 50%;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 /*.edit-profile-form-fields .form-control {*/
@@ -1101,7 +1121,8 @@ label:focus,
 /*}*/
 
 #edit-profile-fields {
-    max-width: 500px;
+    max-width: 600px;
+
 }
 
 
@@ -1110,26 +1131,12 @@ label:focus,
     margin-top: 50px;
 }
 
-.cancel-button {
-    border: 2px solid #006fa5;
-    border-radius: 30px;
-    margin-right: 20px;
-}
-
-.cancel-button h5 {
-    color: #006fa5;
-    margin: auto;
-    padding: 5px;
-}
-
-.cancel-button:hover {
-    background-color: rgb(245, 245, 245);
-}
 
 .save-button {
     border: 2px solid #006fa5;
     background-color: #006fa5;
     border-radius: 30px;
+    width: 150px;
 }
 
 .save-button h5 {
@@ -1214,38 +1221,6 @@ label:focus,
     margin-top: 50px;
 }
 
-.cancel-button {
-    border: 2px solid #006fa5;
-    border-radius: 30px;
-    margin-right: 20px;
-}
-
-.cancel-button h5 {
-    color: #006fa5;
-    margin: auto;
-    padding: 5px;
-}
-
-.cancel-button:hover {
-    background-color: rgb(245, 245, 245);
-}
-
-.save-button {
-    border: 2px solid #006fa5;
-    background-color: #006fa5;
-    border-radius: 30px;
-}
-
-.save-button h5 {
-    color: white;
-    margin: auto;
-    padding: 5px;
-}
-
-.save-button:hover {
-    background-color: #006ea5dc;
-    color: white;
-}
 
 
 
@@ -1263,43 +1238,8 @@ label:focus,
     margin-top: 50px;
 }
 
-.cancel-button {
-    border: 2px solid #006fa5;
-    border-radius: 30px;
-    margin-right: 20px;
-}
 
-/*.change-password-form-fields .form-control {*/
-/*    border-radius: 10px;*/
-/*    border: 3px solid rgb(185, 185, 185);*/
-/*}*/
 
-.cancel-button h5 {
-    color: #006fa5;
-    margin: auto;
-    padding: 5px;
-}
-
-.cancel-button:hover {
-    background-color: rgb(245, 245, 245);
-}
-
-.save-button {
-    border: 2px solid #006fa5;
-    background-color: #006fa5;
-    border-radius: 30px;
-}
-
-.save-button h5 {
-    color: white;
-    margin: auto;
-    padding: 5px;
-}
-
-.save-button:hover {
-    background-color: #006ea5dc;
-    color: white;
-}
 
 /* -------------------- NAVBAR -------------------------------- */
 

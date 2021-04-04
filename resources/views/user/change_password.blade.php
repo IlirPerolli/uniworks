@@ -66,9 +66,6 @@
                         <br>
                         @enderror
                         <div class="change-password-buttons">
-                            <div class="cancel-button btn">
-                                <h5>Anulo</h5>
-                            </div>
 
                             <button class="save-button btn">
                                 <h5> Ruaj</h5>

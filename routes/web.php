@@ -39,6 +39,11 @@ Route::middleware('auth',)->group(function(){
     Route::patch('/user/changePassword/update', 'App\Http\Controllers\UserChangePasswordController@update')->name('user.password.update');
     Route::get('/user/edit','App\Http\Controllers\UserProfileController@edit')->name('user.edit');
     Route::patch('/user/update','App\Http\Controllers\UserProfileController@update')->name('user.update');
+    Route::get('/user/changeUsername', 'App\Http\Controllers\UserChangeUsernameController@index')->name('user.username.edit');
+    Route::patch('/user/changeUsername/update', 'App\Http\Controllers\UserChangeUsernameController@update')->name('user.username.update');
+    Route::get('/user/changePhoto', 'App\Http\Controllers\UserChangePhotoController@index')->name('user.photo.edit');
+    Route::patch('/user/changePhoto/update', 'App\Http\Controllers\UserChangePhotoController@update')->name('user.photo.update');
+    Route::patch('/user/changePhoto/destroy', 'App\Http\Controllers\UserChangePhotoController@destroy')->name('user.photo.destroy');
 });
 
 Route::get('/category/{category}','App\Http\Controllers\CategoriesController@show')->name('category.show');

@@ -1,11 +1,15 @@
 @extends('layouts.index')
 
 @section('title')
-    <title>{{$user->name . " " . $user->surname . " - Ndrysho fjalekalimin"}}</title>
+    <title>{{$user->name . " " . $user->surname . " - Ndrysho profilin"}}</title>
 @endsection
 @section('styles')
     <style>
         input[type=text]{
+
+            height: 50px !important;
+        }
+        input[type=email]{
 
             height: 50px !important;
         }
@@ -30,8 +34,32 @@
                     <h1 class="edit-profile-text">Edito profilin</h1>
 
                     <div id="edit-profile-user-photo">
-                        <img src="/images/{{$user->photo->name}}" alt="...">
+
+
+                        <form class="edit-profile-form-fields" action="{{route('user.photo.update')}}" method="POST" enctype="multipart/form-data" id="input-form">
+                            @csrf
+                            @method('PATCH')
+
+                            <label for="file" class="upload-photo-btn">
+                                <input class="upload-photo-input" type="file" name="photo_id" id="file"
+                                       accept=".jpeg,.jpg,.png,.svg">
+
+                                <img src="/images/{{$user->photo->name}}" alt="..." style="max-width: 300px; max-height: 300px; width: 50%; cursor: pointer">
+                                <input type="submit" style="display: none">
+                            </label>
+                            @error('file_id')
+                            <span style="color:red">{{ $message }}</span>
+                            @enderror
+                        </form>
+                        @if (auth()->user()->photo_id != 1)
+                            <form action="{{route('user.photo.destroy')}}" method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <button class="btn btn-link" id="remove-photo-link" type="submit">Fshij foton</button>
+                            </form>
+                        @endif
                     </div>
+
                     @if(session()->has('updated_user'))
                         <div class="alert alert-success" style="margin-top: 20px" role="alert">
                             {{session('updated_user')}}
@@ -88,9 +116,6 @@
                         <br>
                         @enderror
                         <div class="edit-profile-buttons">
-                            <div class="cancel-button btn">
-                                <h5>Anulo</h5>
-                            </div>
 
                             <button class="save-button btn">
                                 <h5>Ruaj</h5>
@@ -128,6 +153,16 @@
         });
 
 
+    </script>
+    <script>
+        document.getElementById("file").onchange = function() {
+            document.getElementById("form").submit();
+        };
+    </script>
+    <script>
+        document.getElementById("file").onchange = function() {
+            document.getElementById("input-form").submit();
+        };
     </script>
 
 @endsection
