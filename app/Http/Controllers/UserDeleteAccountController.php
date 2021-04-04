@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AdminCreateCategoryRequest;
-use App\Models\Category;
+use App\Http\Requests\UserDeleteAccountRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class CategoriesController extends Controller
+class UserDeleteAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-
+        $user = auth()->user();
+        return view('user.delete_account', compact('user'));
     }
 
     /**
@@ -25,8 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.categories.create', compact('categories'));
+        //
     }
 
     /**
@@ -35,11 +35,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminCreateCategoryRequest $request)
+    public function store(Request $request)
     {
-        Category::create($request->all());
-        session()->flash('added_category', 'Kategoria u krijua me sukses.');
-        return back();
+        //
     }
 
     /**
@@ -82,10 +80,36 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserDeleteAccountRequest $request)
     {
-        Category::find($id)->delete();
-        session()->flash('deleted_category', 'Kategoria u fshi me sukses.');
-        return back();
+        $user = auth()->user();
+        $current_password = auth()->user()->password;
+
+        if(Hash::check($request->current_password, $current_password))
+        {
+//mos fshi dokumentet se mund te jene edhe te nje autorit tjeter...
+
+            if (file_exists(public_path() .'/images/'. $user->photo->name)) {//kontrollo nese ekziston foto ne storage para se te fshihet
+                unlink(public_path() .'/images/'. $user->photo->name);
+            }
+
+            $user->delete();
+
+            if (auth()->user()->slug == $user->slug){
+                return redirect()->route('login');
+            }
+            else{
+                return back();
+            }
+
+        }
+        else
+        {
+            session()->flash('invalid-current-password', 'Fjalëkalimi i tanishëm është gabim.');
+            return back();
+        }
+
+
+
     }
 }

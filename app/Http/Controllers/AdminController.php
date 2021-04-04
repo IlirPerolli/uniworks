@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AdminCreateCategoryRequest;
-use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +16,10 @@ class CategoriesController extends Controller
     {
 
     }
+    public function users(){
+        $users = User::orderBy('name', 'ASC')->paginate(20);
+        return view('admin.users',compact('users'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,8 +28,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.categories.create', compact('categories'));
+        //
     }
 
     /**
@@ -35,11 +37,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminCreateCategoryRequest $request)
+    public function store(Request $request)
     {
-        Category::create($request->all());
-        session()->flash('added_category', 'Kategoria u krijua me sukses.');
-        return back();
+        //
     }
 
     /**
@@ -82,10 +82,16 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        Category::find($id)->delete();
-        session()->flash('deleted_category', 'Kategoria u fshi me sukses.');
+        if (file_exists(public_path() .'/images/'. $user->photo->name)) {//kontrollo nese ekziston foto ne storage para se te fshihet
+            unlink(public_path() .'/images/'. $user->photo->name);
+        }
+
+        $user->delete();
+
+
         return back();
+
     }
 }

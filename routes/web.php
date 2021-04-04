@@ -27,6 +27,8 @@ Route::middleware(['auth', 'admin'])->group(function(){
 Route::get('admin/category/create','App\Http\Controllers\CategoriesController@create' )->name('category.create');
     Route::post('admin/category/store', 'App\Http\Controllers\CategoriesController@store')->name('category.store');
     Route::delete('admin/category/{category}/destroy','App\Http\Controllers\CategoriesController@destroy')->name('category.destroy');
+    Route::get('admin/users','App\Http\Controllers\AdminController@users')->name('admin.users.show');
+    Route::delete('admin/user/{user}/destroy','App\Http\Controllers\AdminController@destroy')->name('admin.users.destroy');
 
 });
 
@@ -44,6 +46,9 @@ Route::middleware('auth',)->group(function(){
     Route::get('/user/changePhoto', 'App\Http\Controllers\UserChangePhotoController@index')->name('user.photo.edit');
     Route::patch('/user/changePhoto/update', 'App\Http\Controllers\UserChangePhotoController@update')->name('user.photo.update');
     Route::patch('/user/changePhoto/destroy', 'App\Http\Controllers\UserChangePhotoController@destroy')->name('user.photo.destroy');
+
+    Route::get('/user/deleteAccount', 'App\Http\Controllers\UserDeleteAccountController@index')->name('user.delete.page');
+    Route::delete('/user/destroy', 'App\Http\Controllers\UserDeleteAccountController@destroy')->name('user.destroy');
 });
 
 Route::get('/category/{category}','App\Http\Controllers\CategoriesController@show')->name('category.show');

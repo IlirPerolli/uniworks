@@ -72,7 +72,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="name">Emri</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required>
+                                <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required autocomplete="off">
                             </div>
                             @error('name')
                             <span style="color:red">{{ $message }}</span>
@@ -80,7 +80,7 @@
                             @enderror
                             <div class="form-group col-md-6">
                                 <label for="surname">Mbiemri</label>
-                                <input type="text" class="form-control" id="surname" name="surname" value="{{$user->surname}}" required>
+                                <input type="text" class="form-control" id="surname" name="surname" value="{{$user->surname}}" required autocomplete="off">
                             </div>
                         </div>
                         @error('surname')
@@ -89,7 +89,7 @@
                         @enderror
                         <div class="form-group">
                             <label for="location">Qyteti</label>
-                            <input type="text" class="form-control" id="location">
+                            <input type="text" class="form-control" id="location" autocomplete="off">
                         </div>
 
                         <div class="form-group">
@@ -100,7 +100,7 @@
 
                         <div class="form-group">
                             <label for="email">Email adresa</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" required>
+                            <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" required autocomplete="off">
                         </div>
                         @error('email')
                         <span style="color:red">{{ $message }}</span>

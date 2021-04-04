@@ -38,7 +38,7 @@
                         @method('PATCH')
                         <div class="form-group" id="change-password-field">
                             <label for="username">Shkruani usernamin e ri</label>
-                            <input type="text" class="form-control" name="username" id="username">
+                            <input type="text" class="form-control" name="username" id="username" autocomplete="off">
                         </div>
                         <span style="font-size: 13px"><i><strong>Kujdes!</strong> Vetem një herë lejohet ndërrimi i usernamit.</i></span>
                        <br>
