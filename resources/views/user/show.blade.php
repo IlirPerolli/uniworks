@@ -16,7 +16,7 @@
                     <div class="user-profile-info card">
                         <div class="row no-gutters">
                             <div class="col-md-4" id="user-photo">
-                                <img src="/images/{{$user->photo->name}}" alt="...">
+                                <img src="/images/{{$user->photo->name}}" alt="{{$user->name . " ". $user->surname}}">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body" id="user-info">
@@ -34,7 +34,7 @@
                                             <path fill-rule="evenodd"
                                                   d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
                                                   clip-rule="evenodd" />
-                                        </svg>Gjakovë</p>
+                                        </svg>{{$user->city->name}}</p>
                                     <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd"
                                                   d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"

@@ -85,22 +85,33 @@ class UserDeleteAccountController extends Controller
         $user = auth()->user();
         $current_password = auth()->user()->password;
 
+
         if(Hash::check($request->current_password, $current_password))
         {
 //mos fshi dokumentet se mund te jene edhe te nje autorit tjeter...
-
+            if ($user->photo_id != 1){
             if (file_exists(public_path() .'/images/'. $user->photo->name)) {//kontrollo nese ekziston foto ne storage para se te fshihet
                 unlink(public_path() .'/images/'. $user->photo->name);
             }
+            }
+            $user->name = $user->name . " " . $user->surname;
+            $user->surname = null;
+            $user->gender = null;
+            $user->username = null;
+            $user->slug = null;
+            $user->university_id = null;
+            $user->city_id = null;
+            $user->about = null;
+            $user->email = null;
+            $user->password = null;
+            $user->photo_id = 1;
+            $user->role_id = 1;
 
-            $user->delete();
+            $user->save();
 
-            if (auth()->user()->slug == $user->slug){
+
                 return redirect()->route('login');
-            }
-            else{
-                return back();
-            }
+
 
         }
         else
