@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class University extends Model
+class City extends Model
 {
     use HasFactory;
     use HasFactory, Notifiable;

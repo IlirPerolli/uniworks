@@ -40,11 +40,16 @@
                             @csrf
                             @method('PATCH')
 
-                            <label for="file" class="upload-photo-btn">
+                            <label for="file" class="upload-photo-btn" style="position:relative;">
                                 <input class="upload-photo-input" type="file" name="photo_id" id="file"
                                        accept=".jpeg,.jpg,.png,.svg">
 
-                                <img src="/images/{{$user->photo->name}}" alt="..." style="max-width: 300px; max-height: 300px; width: 50%; cursor: pointer">
+                                <img src="/images/{{$user->photo->name}}" alt="..." style="max-width: 140px; max-height: 140px; width: 100%; cursor: pointer">
+                               <div class="edit-profile-camera">
+                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                       <path fill-rule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                                   </svg>
+                               </div>
                                 <input type="submit" style="display: none">
                             </label>
                             @error('file_id')
@@ -89,13 +94,14 @@
                         @enderror
                         <div class="form-group">
                             <label for="location">Qyteti</label>
-                            <input type="text" class="form-control" id="location" autocomplete="off">
+                            <input type="text" class="form-control" id="city_id" name="city" value="{{$user->city->name}}" autocomplete="off">
+                            <input type="hidden" id="id_city" name="city_id">
                         </div>
 
                         <div class="form-group">
                             <label for="work">Universiteti</label>
                             <input type="text" class="form-control" id="university_id" name="university" value="{{$user->university->name}}">
-                            <input type="hidden" id="id" name="university_id">
+                            <input type="hidden" id="id_university" name="university_id">
                         </div>
 
                         <div class="form-group">
@@ -147,7 +153,18 @@
             select:function(e,ui)
             {
                 $('#university_id').val(ui.item.value);
-                $('#id').val(ui.item.id);
+                $('#id_university').val(ui.item.id);
+                return false;
+            }
+        });
+        $('#city_id').autocomplete({
+            source:'{!!URL::route('user.city.autocomplete')!!}',
+            minlength:1,
+            autoFocus:true,
+            select:function(e,ui)
+            {
+                $('#city_id').val(ui.item.value);
+                $('#id_city').val(ui.item.id);
                 return false;
             }
         });

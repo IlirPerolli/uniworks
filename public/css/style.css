@@ -1079,9 +1079,37 @@ label:focus,
 
 /* User Edit Profile */
 #remove-photo-link{
-    color: #dc3545;margin-left: 20px; margin-top:-60px
+    color: #dc3545;margin-left: 20px; margin-top:-40px;
 }
+.edit-profile-camera{
+    position: absolute;
+    background: red;
+    top:0;
+    margin-top: 70%;
+    margin-left: -10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #D9D9D9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+.upload-photo-btn img:hover{
+    opacity: 0.9;
+}
+.upload-photo-btn{
 
+    width: 140px;
+    height: auto
+;
+}
+.edit-profile-camera svg{
+    width:30px;
+    height: 30px;
+}
 .user-edit-profile {
     margin-top: 150px;
     margin-bottom: 150px;

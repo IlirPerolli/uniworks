@@ -34,6 +34,7 @@ Route::get('admin/category/create','App\Http\Controllers\CategoriesController@cr
 
 Route::get('autocomplete', 'App\Http\Controllers\PostsController@autocomplete')->name('autocomplete');
 Route::get('/user/university/autocomplete', 'App\Http\Controllers\UserProfileController@autocomplete')->name('user.university.autocomplete');
+Route::get('/user/city/autocomplete', 'App\Http\Controllers\UserProfileController@autocomplete_city')->name('user.city.autocomplete');
 Route::middleware('auth',)->group(function(){
     Route::get('/post/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
     Route::post('/post/store', 'App\Http\Controllers\PostsController@store')->name('post.store');

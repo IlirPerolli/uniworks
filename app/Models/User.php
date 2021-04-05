@@ -30,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','surname','gender','username','slug','university_id','about', 'email', 'password','photo_id','username_changed'
+        'name','surname','gender','username','slug','university_id','city_id','about', 'email', 'password','photo_id','username_changed'
     ];
     public function photo(){
         return $this->belongsTo(Photo::class);
@@ -43,6 +43,9 @@ class User extends Authenticatable
     }
     public function university(){
         return $this->belongsTo(University::class);
+    }
+    public function city(){
+        return $this->belongsTo(City::class);
     }
     public function isAdmin(){
         if ($this->role->name == "administrator"){
