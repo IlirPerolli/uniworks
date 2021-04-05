@@ -79,6 +79,7 @@ class PostsController extends Controller
             $file = File::create(['name'=>$name]);
                 $input['file_id'] = $file->id;
             }
+        $input['user_id'] = auth()->user()->id; //per identifikimin e perdoruesit qe ka krijuar postimin
        $post = Post::create($input); //krijo postimin
 
         $iteration = -1;
@@ -150,9 +151,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $post = Post::findBySlugOrFail($slug);
+        $users = $post->user;
+        return view('posts.show', compact('users', 'post'));
     }
 
     /**
@@ -184,8 +187,32 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $post = Post::findBySlugOrFail($slug);
+
+        if (auth()->user()->id != $post->originalUser->id){ //nese eshte pronari i postimit atehere lejo
+            abort(403, 'Unauthorized action.');
+        }
+        foreach ($post->user as $user){
+            $user->posts()->detach($post->id);
+        }
+        if (file_exists(public_path() .'/files/'. $post->file->name)) {//kontrollo nese ekziston foto ne storage para se te fshihet
+            unlink(public_path() .'/files/'. $post->file->name);
+        }
+        $post->delete();
+        return redirect()->route('user.show',auth()->user()->slug);
+    }
+    public function remove_tag($slug)
+    {
+        $post = Post::findBySlugOrFail($slug);
+        $user = auth()->user();
+        if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+            abort(403, 'Unauthorized action.');
+        }
+
+            $user->posts()->detach($post->id);
+
+       return back();
     }
 }

@@ -2,7 +2,7 @@
     @if(count($posts)>0)
         @foreach($posts as $post)
             <div class="posts-col">
-                <a href="#">
+                <a href="{{route('post.show', $post->slug)}}">
                     <h5>{{Str::limit($post->title,150)}}</h5>
                 </a>
                 <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

@@ -121,6 +121,9 @@
                         <span style="color:red">{{ $message }}</span>
                         <br>
                         @enderror
+                        <div style="margin-top: 10px">
+                        <a href="{{route('user.delete.page')}}" style="color:#dc3545;">Fshij llogarinë</a>
+                        </div>
                         <div class="edit-profile-buttons">
 
                             <button class="save-button btn">

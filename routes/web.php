@@ -36,8 +36,10 @@ Route::get('autocomplete', 'App\Http\Controllers\PostsController@autocomplete')-
 Route::get('/user/university/autocomplete', 'App\Http\Controllers\UserProfileController@autocomplete')->name('user.university.autocomplete');
 Route::get('/user/city/autocomplete', 'App\Http\Controllers\UserProfileController@autocomplete_city')->name('user.city.autocomplete');
 Route::middleware('auth',)->group(function(){
-    Route::get('/post/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
-    Route::post('/post/store', 'App\Http\Controllers\PostsController@store')->name('post.store');
+    Route::get('/article/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
+    Route::post('/article/store', 'App\Http\Controllers\PostsController@store')->name('post.store');
+    Route::delete('/article/{post}/destroy','App\Http\Controllers\PostsController@destroy')->name('post.destroy');
+    Route::delete('/article/{post}/removeTag','App\Http\Controllers\PostsController@remove_tag')->name('post.remove.tag');
     Route::get('/user/changePassword', 'App\Http\Controllers\UserChangePasswordController@index')->name('user.password.edit');
     Route::patch('/user/changePassword/update', 'App\Http\Controllers\UserChangePasswordController@update')->name('user.password.update');
     Route::get('/user/edit','App\Http\Controllers\UserProfileController@edit')->name('user.edit');
@@ -55,5 +57,6 @@ Route::middleware('auth',)->group(function(){
 Route::get('/category/{category}','App\Http\Controllers\CategoriesController@show')->name('category.show');
 Route::get('/search/users','App\Http\Controllers\SearchController@users')->name('search.users');
 Route::get('/search/posts','App\Http\Controllers\SearchController@posts')->name('search.posts');
+Route::get('/article/{post}','App\Http\Controllers\PostsController@show')->name('post.show');
 Route::get('/{user}','App\Http\Controllers\UserProfileController@show')->name('user.show');
 
