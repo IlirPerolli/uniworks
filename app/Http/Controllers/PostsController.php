@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\UserStorePostRequest;
+use App\Http\Requests\UserUpdatePostRequest;
 use App\Models\Category;
 use App\Models\File;
 use App\Models\Photo;
@@ -183,7 +184,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(UserUpdatePostRequest $request, $slug)
     {
 //        dd($request->all());
         $user = auth()->user();
