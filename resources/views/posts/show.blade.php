@@ -79,7 +79,7 @@
 
         @endif
         @endforeach
-        <div class="user-post-about-author">
+        <div class="user-post-about-author mb-5">
             <h2>Rreth autorit</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolorum pariatur ullam iure, ipsam
                 sint magnam. Nam exercitationem blanditiis non fugiat sunt sapiente eligendi dolores. Voluptatibus nisi
@@ -90,6 +90,44 @@
                 similique! Illum ad veritatis natus, qui sequi odit eligendi vitae.
             </p>
         </div>
+        <!-- People You May Know -->
+        <div class="row" id="pymk-row">
+            <div class="col-12">
+                <h2 id="pymk-title">Përdorues që mund ti njihni</h2>
+            </div>
+        </div>
+
+        <div class="wrapper mb-5">
+            @if(count($suggested_users)>0)
+            <ul id="pymk">
+
+
+                @foreach($suggested_users as $user)
+
+
+                <li class="pymk-item mr-2">
+                    <a href="{{route('user.show',$user->slug)}}">
+                        <div class="pymk-photo">
+                            <img src="/images/{{$user->photo->name}}" alt="">
+                        </div>
+                        <div class="pymk-name">
+                            {{$user->name . " " . $user->surname}}
+                        </div>
+                    </a>
+                    <!-- <div class="follow-button">
+                        <button class="follow-btn btn">Follow</button>
+                    </div> -->
+                </li>
+
+                @endforeach
+
+            </ul>
+            @else
+                <span style="color:red">Nuk u gjeten perdorues</span>
+            @endif
+        </div>
+
+
 
 
     </div>

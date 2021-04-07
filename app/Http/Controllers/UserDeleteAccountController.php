@@ -110,7 +110,7 @@ class UserDeleteAccountController extends Controller
             $user->save();
 
 
-                return redirect()->route('login');
+            return redirect()->route('login');
 
 
         }

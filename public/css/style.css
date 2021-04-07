@@ -1317,6 +1317,87 @@ label:focus,
     margin-top: 50px;
 }
 
+/*  People You May Know */
+#pymk-row {
+    margin-top: 50px;
+}
+
+#pymk-title {
+    margin-bottom: 0;
+}
+
+.wrapper {
+    overflow: auto;
+    margin-top: 25px;
+}
+
+#pymk {
+    padding: 15px;
+    width: 2225px;
+    overflow: auto;
+    list-style: none;
+}
+
+#pymk li {
+    display: inline-block;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+
+#pymk li:hover {
+    box-shadow: 0px 0px 15px 0px #838383;
+}
+
+.pymk-item {
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+}
+
+.pymk-item img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.pymk-item a {
+    color: black;
+    text-decoration: none;
+}
+
+.pymk-photo {
+    margin-top: 15px;
+}
+
+.pymk-name {
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+.wrapper {
+    --scrollbarBG: transparent;
+    --thumbBG: #006fa5;
+}
+
+.wrapper::-webkit-scrollbar {
+    height: 10px;
+}
+
+.wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+.wrapper::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 30px;
+    border: 1px solid var(--scrollbarBG);
+}
 
 
 /* -------------------- NAVBAR -------------------------------- */

@@ -60,22 +60,36 @@ class User extends Authenticatable
         $this->attributes['name'] = $name;
     }
     public function setSurnameAttribute($value){
+    if ($value != null) {
         $surname = $value;
         $surname = strtolower($surname);
         $surname = ucfirst($surname);
         $this->attributes['surname'] = $surname;
     }
+    else{ $this->attributes['surname'] = $value;}
+
+
+    }
     public function setUsernameAttribute($value){
-        $username = strtolower($value);
-        $this->attributes['username'] = $username;
+        if ($value != null) {
+            $username = strtolower($value);
+            $this->attributes['username'] = $username;
+        }
+        else{$this->attributes['username'] = $value;}
     }
     public function setSlugAttribute($value){
-        $slug = strtolower($value);
-        $this->attributes['slug'] = $slug;
+        if ($value != null) {
+            $slug = strtolower($value);
+            $this->attributes['slug'] = $slug;
+        }
+        else{$this->attributes['slug'] = $value;}
     }
     public function setEmailAttribute($value){
-        $email = strtolower($value);
-        $this->attributes['email'] = $email;
+        if ($value != null) {
+            $email = strtolower($value);
+            $this->attributes['email'] = $email;
+        }
+    else{$this->attributes['email'] = $value;}
     }
 
     /**

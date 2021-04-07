@@ -155,7 +155,8 @@ class PostsController extends Controller
     {
         $post = Post::findBySlugOrFail($slug);
         $users = $post->user;
-        return view('posts.show', compact('users', 'post'));
+        $suggested_users = User::where('id','<>' , auth()->user()->id)->where('username','<>','null')->get();
+        return view('posts.show', compact('users', 'post', 'suggested_users'));
     }
 
     /**
