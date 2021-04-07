@@ -165,9 +165,15 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $user = auth()->user();
+        $post = Post::findBySlugOrFail($slug);
+        if ($post->user_id != $user->id){
+            abort(403, 'Unauthorized action.');
+        }
+        $categories = Category::all();
+        return view('posts.edit',compact('user', 'post', 'categories'));
     }
 
     /**
@@ -177,9 +183,57 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+//        dd($request->all());
+        $user = auth()->user();
+        $input = $request->all();
+        $post = Post::findBySlugOrFail($slug);
+        $category = Category::find($request->category_id);
+        if ($post->user_id != $user->id){
+            abort(403, 'Unauthorized action.');
+        }
+        if (!$category){
+            session()->flash('category_error', 'Oops... Kategoria nuk u gjet.');
+            return back();
+        }
+
+        $post->update($input);
+
+            $author_iteration = 0; //shiko sa autore jane krijuar ne forme
+            foreach ($request->author as $author){
+                if ($author != null){$author_iteration++;}
+            }
+        $post_user_count = count($post->user); //shiko sa usera ka ky postim
+            if (($post_user_count + $author_iteration)>5){//nese ka shuma e ketyre eshte me e madhe se 5 atehere mos lejo
+                session()->flash('user_error', 'Oops... Ky botim ka shume autor.');
+                return back();
+            }
+            else{
+        $iteration = -1;
+        foreach ($request->id as $id){ //krijo postimet per userat tjere
+            $iteration++;
+            if ($id == null){
+                if ($request->author[$iteration] != null){
+                    $user = User::create(['name'=>$request->author[$iteration]]);
+                    if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+                        $user->posts()->attach($post->id);
+                    }
+                }
+            }
+            if ($id != null) {
+                $user = User::where('id', $id)->first();
+                if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+                    $user->posts()->attach($post->id);
+                }
+            }
+        }
+        if (!auth()->user()->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+            auth()->user()->posts()->attach($post->id);//krijo postim per vete
+        }
+        session()->flash('updated_post', 'Postimi u ndryshua me sukses.');
+        return redirect()->route('post.edit',$post->slug);
+            }
     }
 
     /**

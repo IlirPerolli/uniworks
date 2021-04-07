@@ -38,6 +38,8 @@ Route::get('/user/city/autocomplete', 'App\Http\Controllers\UserProfileControlle
 Route::middleware('auth',)->group(function(){
     Route::get('/article/create', 'App\Http\Controllers\PostsController@create')->name('post.create');
     Route::post('/article/store', 'App\Http\Controllers\PostsController@store')->name('post.store');
+    Route::get('/article/{post}/edit', 'App\Http\Controllers\PostsController@edit')->name('post.edit');
+    Route::patch('/article/{post}/update', 'App\Http\Controllers\PostsController@update')->name('post.update');
     Route::delete('/article/{post}/destroy','App\Http\Controllers\PostsController@destroy')->name('post.destroy');
     Route::delete('/article/{post}/removeTag','App\Http\Controllers\PostsController@remove_tag')->name('post.remove.tag');
     Route::get('/user/changePassword', 'App\Http\Controllers\UserChangePasswordController@index')->name('user.password.edit');

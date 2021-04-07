@@ -79,6 +79,9 @@
 
         @endif
         @endforeach
+        @if (auth()->user()->id = $post->user_id)
+            <a href="{{route('post.edit',$post->slug)}}">Edito</a>
+            @endif
         <div class="user-post-about-author mb-5">
             <h2>Rreth autorit</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolorum pariatur ullam iure, ipsam
