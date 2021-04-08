@@ -55,9 +55,8 @@
 
         <div class="user-post-pdf">
 {{--            <h2>PDF Example with iframe</h2>--}}
-            <object width="100%" height="500" type="application/pdf" data="/files/{{$post->file->name}}?#zoom=100&scrollbar=0&toolbar=0&navpanes=0">
-                <p style="color:red">Kërkojmë falje. Nuk mund te shfaqet dokumenti.</p>
-            </object>
+            <embed src="/files/{{$post->file->name}}" width="50%" height="500px" style="border: 5px solid gray">
+            </embed>
 
         </div>
 
@@ -82,18 +81,38 @@
         @if (auth()->user()->id == $post->user_id)
             <a href="{{route('post.edit',$post->slug)}}">Edito</a>
             @endif
-        <div class="user-post-about-author mb-5">
-            <h2>Rreth autorit</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolorum pariatur ullam iure, ipsam
-                sint magnam. Nam exercitationem blanditiis non fugiat sunt sapiente eligendi dolores. Voluptatibus nisi
-                eos asperiores nobis fuga. Delectus commodi ullam accusantium cum veniam eveniet consequuntur inventore
-                similique! Illum ad veritatis natus, qui sequi odit eligendi vitae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolorum pariatur ullam iure, ipsam
-                sint magnam. Nam exercitationem blanditiis non fugiat sunt sapiente eligendi dolores. Voluptatibus nisi
-                eos asperiores nobis fuga. Delectus commodi ullam accusantium cum veniam eveniet consequuntur inventore
-                similique! Illum ad veritatis natus, qui sequi odit eligendi vitae.
-            </p>
-        </div>
-        <!-- People You May Know -->
+    <!-- Other Articles -->
+        <div class="other-articles mb-5">
+
+            <div class="user-post-other-articles">
+                <h2>Artikujt nga autorë të tjerë</h2>
+            </div>
+
+@if (count($other_posts)>0)
+            @foreach($other_posts as $post)
+                <div class="other-articles-content">
+                    <div class="other-articles-title">
+                        <a href="{{route('post.show',$post->slug)}}">
+                            <h5>{{Str::limit($post->title,150)}}</h5>
+                        </a>
+                        <div class="other-articles-partners">
+                            <div class="other-articles-partners-photo">
+                                @foreach($post->user as $user)
+                                    <a href="{{route('user.show',$user->slug)}}"> <img src="/images/{{$user->photo->name}}" alt="" title="{{$user->name . " " . $user->surname}}"></a>
+                                @endforeach
+
+                            </div>
+                        </div>
+                        <a href="{{route('post.show',$post->slug)}}"> <p class="other-articles-description">{{Str::limit($post->abstract,500)}}</p></a>
+                    </div>
+                </div>
+
+        @endforeach
+            @else
+    <br>
+    <span style="color:red">Nuk u gjeten artikuj</span>
+            @endif
+{{--        <!-- People You May Know -->--}}
         <div class="row" id="pymk-row">
             <div class="col-12">
                 <h2 id="pymk-title">Përdorues që mund ti njihni</h2>
@@ -134,7 +153,7 @@
 
 
     </div>
-
+    </div>
 
 @endsection
 
