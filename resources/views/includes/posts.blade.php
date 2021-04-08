@@ -11,7 +11,7 @@
                     </svg>
                     @foreach($post->user as $user)
                         @if ($user->username == null)
-                            <span>{{$user->name}}</span>
+                            <a href="{{route('user.show',$user->slug)}}">{{$user->name}}</a>
                         @else
                             <a href="{{route('user.show',$user->slug)}}">{{$user->name . " ". $user->surname}}</a>
                         @endif

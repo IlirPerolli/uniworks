@@ -93,7 +93,6 @@ class AdminController extends Controller
         $user->surname = null;
         $user->gender = null;
         $user->username = null;
-        $user->slug = null;
         $user->university_id = null;
         $user->city_id = null;
         $user->about = null;

@@ -10,6 +10,8 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+
 
 class PostsController extends Controller
 {
@@ -88,7 +90,8 @@ class PostsController extends Controller
             $iteration++;
                 if ($id == null){
                     if ($request->author[$iteration] != null){
-                       $user = User::create(['name'=>$request->author[$iteration]]);
+                        $slug = SlugService::createSlug(User::class, 'slug', $request->author[$iteration]);
+                        $user = User::create(['name'=>$request->author[$iteration],'slug'=>$slug]);
                     if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
                         $user->posts()->attach($post->id);
                     }
@@ -156,7 +159,7 @@ class PostsController extends Controller
     {
         $post = Post::findBySlugOrFail($slug);
         $users = $post->user;
-        $suggested_users = User::where('id','<>' , auth()->user()->id)->where('username','<>','null')->get();
+        $suggested_users = User::where('id','<>' , auth()->user()->id)->take(5)->get();
         return view('posts.show', compact('users', 'post', 'suggested_users'));
     }
 
@@ -173,8 +176,9 @@ class PostsController extends Controller
         if ($post->user_id != $user->id){
             abort(403, 'Unauthorized action.');
         }
+        $post_user_count = count($post->user); //shiko sa usera ka ky postim
         $categories = Category::all();
-        return view('posts.edit',compact('user', 'post', 'categories'));
+        return view('posts.edit',compact('user', 'post', 'categories', 'post_user_count'));
     }
 
     /**
@@ -207,7 +211,7 @@ class PostsController extends Controller
             }
         $post_user_count = count($post->user); //shiko sa usera ka ky postim
             if (($post_user_count + $author_iteration)>5){//nese ka shuma e ketyre eshte me e madhe se 5 atehere mos lejo
-                session()->flash('user_error', 'Oops... Ky botim ka shume autor.');
+                session()->flash('user_error', 'Oops... Ky postim ka shume autor.');
                 return back();
             }
             else{
@@ -216,7 +220,8 @@ class PostsController extends Controller
             $iteration++;
             if ($id == null){
                 if ($request->author[$iteration] != null){
-                    $user = User::create(['name'=>$request->author[$iteration]]);
+                    $slug = SlugService::createSlug(User::class, 'slug', $request->author[$iteration]);
+                    $user = User::create(['name'=>$request->author[$iteration],'slug'=>$slug]);
                     if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
                         $user->posts()->attach($post->id);
                     }

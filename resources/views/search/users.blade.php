@@ -23,13 +23,16 @@
                 @foreach($users_from_search as $user)
             <div class="searched-user-profile-col col-md-3 col-lg-2">
                 <div class="searched-user-profile card">
-                    <img src="/images/{{$user->photo->name}}" class="card-img-top" alt="...">
+
+                    <a href="{{route('user.show',$user->slug)}}"> <img src="/images/{{$user->photo->name}}" class="card-img-top" alt="..."/></a>
                     <div class="searched-user-profile-content card-body">
-                        <a href="#">
-                            <h6 class="card-title">{{$user->name. " ". $user->surname}}</h6>
-                        </a>
-                        <p class="text-muted">Universiteti</p>
+
+                        <a href="{{route('user.show',$user->slug)}}">    <h6 class="card-title">{{$user->name. " ". $user->surname}}</h6>   </a>
+
+                        @if ($user->university_id != null)  <a href="{{route('user.show',$user->slug)}}"> <p class="text-muted" style="text-align: center">{{$user->university->name}}</p></a>@endif
+
                     </div>
+
                 </div>
             </div>
                 @endforeach

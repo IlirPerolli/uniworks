@@ -51,7 +51,7 @@
                 <br>
                 @enderror
 
-                <div style="margin-bottom: -20px; margin-top: 10px">Autoret</div>
+                <div style="margin-bottom: -20px; margin-top: 10px">Autoret ({{$post_user_count}}/5)</div>
                 <div class="form-row">
 
                     <div class="col-sm-12 col-md-6">
