@@ -97,13 +97,19 @@
                             <input type="text" class="form-control" id="city_id" name="city" value="{{$user->city->name}}" autocomplete="off">
                             <input type="hidden" id="id_city" name="city_id">
                         </div>
-
+                        @error('city')
+                        <span style="color:red">{{ $message }}</span>
+                        <br>
+                        @enderror
                         <div class="form-group">
                             <label for="work">Universiteti</label>
                             <input type="text" class="form-control" id="university_id" name="university" value="{{$user->university->name}}">
                             <input type="hidden" id="id_university" name="university_id">
                         </div>
-
+                        @error('university')
+                        <span style="color:red">{{ $message }}</span>
+                        <br>
+                        @enderror
                         <div class="form-group">
                             <label for="email">Email adresa</label>
                             <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" required autocomplete="off">

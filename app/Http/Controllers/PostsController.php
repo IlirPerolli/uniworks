@@ -159,7 +159,13 @@ class PostsController extends Controller
     {
         $post = Post::findBySlugOrFail($slug);
         $users = $post->user;
-        $suggested_users = User::where('id','<>' , auth()->user()->id)->take(15)->get();
+        if (auth()->check()){
+            $suggested_users = User::where('id','<>' , auth()->user()->id)->take(15)->get();
+        }
+        else{
+            $suggested_users = User::take(15)->get();
+        }
+
         $other_posts = Post::where('category_id',$post->category_id)->where('id','<>',$post->id)->take(5)->get();;
         return view('posts.show', compact('users', 'post', 'suggested_users', 'other_posts'));
     }
@@ -263,6 +269,7 @@ class PostsController extends Controller
             unlink(public_path() .'/files/'. $post->file->name);
         }
         $post->delete();
+        session()->flash('deleted_post', 'Postimi u fshi me sukses.');
         return redirect()->route('user.show',auth()->user()->slug);
     }
     public function remove_tag($slug)

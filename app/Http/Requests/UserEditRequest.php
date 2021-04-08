@@ -28,6 +28,8 @@ class UserEditRequest extends FormRequest
             'surname'=>'required|max:255|min:2',
             'email' => 'required|max:255|min:5|unique:users,email,' . auth()->user()->id,
             'about' => 'max:255',
+            'university' => 'required|min:3',
+            'city' => 'required|min:3',
         ];
     }
     public function messages()
@@ -43,7 +45,11 @@ class UserEditRequest extends FormRequest
             'email.max'=>'Emaili duhet të ketë maksimum 255 karaktere.',
             'email.min'=>'Emaili duhet të ketë minimum 5 karaktere.',
             'email.unique'=>'Ky email është në përdorim.',
-            'about.max'=>'Bio duhet të ketë maksimum 255 karaktere.'
+            'about.max'=>'Bio duhet të ketë maksimum 255 karaktere.',
+            'university.required'=>'Universiteti duhet të plotësohet.',
+            'university.min'=>'Universiteti duhet të ketë minimum 3 karaktere.',
+            'city.required'=>'Qyteti duhet të plotësohet.',
+            'city.min'=>'Qyteti duhet të ketë minimum 3 karaktere.',
         ];
     }
 }

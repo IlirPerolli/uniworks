@@ -60,7 +60,13 @@
         <div class="user-profile-content-articles">
 
             <div class="row">
+
                 <div class="user-articles-title col">
+                    @if(session()->has('deleted_post'))
+                    <div class="alert alert-danger" style="margin-top: 20px" role="alert">
+                        {{session('deleted_post')}}
+                    </div>
+                    @endif
                     <h2>Artikujt</h2>
                 </div>
             </div>

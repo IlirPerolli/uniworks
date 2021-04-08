@@ -59,7 +59,7 @@
             </embed>
 
         </div>
-
+    @if (auth()->check())
     @if ($post->user_id == auth()->user()->id)
         <form action="{{route('post.destroy',$post->slug)}}" method="POST">
             @csrf
@@ -68,6 +68,8 @@
         </form>
 
         @endif
+        @endif
+        @if (auth()->check())
         @foreach($users as $user)
         @if (($user->id == auth()->user()->id) && ($post->user_id != auth()->user()->id ))
                 <form action="{{route('post.remove.tag',$post->slug)}}" method="POST">
@@ -78,8 +80,11 @@
 
         @endif
         @endforeach
+        @endif
+        @if (auth()->check())
         @if (auth()->user()->id == $post->user_id)
             <a href="{{route('post.edit',$post->slug)}}">Edito</a>
+            @endif
             @endif
     <!-- Other Articles -->
         <div class="other-articles mb-5">
@@ -103,7 +108,7 @@
 
                             </div>
                         </div>
-                        <a href="{{route('post.show',$post->slug)}}"> <p class="other-articles-description">{{Str::limit($post->abstract,500)}}</p></a>
+                        <p class="other-articles-description">{{Str::limit($post->abstract,500)}}</p>
                     </div>
                 </div>
 
