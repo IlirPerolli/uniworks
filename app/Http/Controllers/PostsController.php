@@ -55,6 +55,15 @@ class PostsController extends Controller
             session()->flash('category_error', 'Oops... Kategoria nuk u gjet.');
             return back();
         }
+        $author_iteration = 0; //shiko sa autore jane krijuar ne forme
+        foreach ($request->author as $author){
+            if ($author != null){$author_iteration++;}
+        }
+
+        if (($author_iteration)>4){//nese ka shuma e ketyre eshte me e madhe se 5 atehere mos lejo
+            session()->flash('user_error', 'Oops... Ky postim ka shume autor.');
+            return back();
+        }
 //dd($input);
 //        $iteration = -1;
 //        $ids =[]; //merr ne varg te gjitha id e shtypur ne forme

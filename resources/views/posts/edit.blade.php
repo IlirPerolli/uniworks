@@ -81,24 +81,23 @@
 
 
                 </div>
-                <br>
+
                 @if(session()->has('user_error'))
+                    <br>
                     <div class="alert alert-danger" role="alert">
                         {{session('user_error')}}
                     </div>
+
                 @endif
-                <br>
+
                 @if(session()->has('duplicate_username'))
+                    <br>
                     <div class="alert alert-danger" role="alert">
                         {{session('duplicate_username')}}
                     </div>
+
                 @endif
-                <br>
-                @if(session()->has('user_error'))
-                    <div class="alert alert-danger" role="alert">
-                        {{session('user_error')}}
-                    </div>
-                @endif
+
 
                 <div class="form-group">
                     <label for="abstract">Abstrakti</label>
@@ -152,9 +151,9 @@
 
 
                 <button class="post-article-btn btn">
-                    <a href="#">
-                        <h6>Posto</h6>
-                    </a>
+
+                        <h6>Ndrysho</h6>
+
                 </button>
             </form>
         </div>
