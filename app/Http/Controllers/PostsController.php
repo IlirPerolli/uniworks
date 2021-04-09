@@ -50,11 +50,12 @@ class PostsController extends Controller
         $input = $request->all();
 
         $category = Category::find($request->category_id);
+
         if (!$category){
             session()->flash('category_error', 'Oops... Kategoria nuk u gjet.');
             return back();
         }
-       // dd($request->all());
+//dd($input);
 //        $iteration = -1;
 //        $ids =[]; //merr ne varg te gjitha id e shtypur ne forme
 //        foreach($request->id as $id) {//shiko te gjithe usernamet e shtypur ne forme dhe futi ne vargun ids
@@ -88,6 +89,12 @@ class PostsController extends Controller
         $iteration = -1;
         foreach ($request->id as $id){ //krijo postimet per userat tjere
             $iteration++;
+            if($id != null){
+                $user = User::find($id);
+                if (($request->author[$iteration] != $user->name . " " . $user->surname) && ($request->author[$iteration] != $user->name)){
+                    $id = null;
+                }
+            }
                 if ($id == null){
                     if ($request->author[$iteration] != null){
                         $slug = SlugService::createSlug(User::class, 'slug', $request->author[$iteration]);
@@ -98,6 +105,12 @@ class PostsController extends Controller
                     }
                 }
                 if ($id != null) {
+                    $user = User::find($id);
+                    if (!$user){
+                        session()->flash('user_error', 'Oops... Përdoruesi nuk u gjet.');
+                        return back();
+                    }
+
                 $user = User::where('id', $id)->first();
 //                $user_id = $user->id;
                     if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
@@ -105,6 +118,7 @@ class PostsController extends Controller
                     }
             }
         }
+
         if (!auth()->user()->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
             auth()->user()->posts()->attach($post->id);//krijo postim per vete
         }
@@ -225,6 +239,12 @@ class PostsController extends Controller
         $iteration = -1;
         foreach ($request->id as $id){ //krijo postimet per userat tjere
             $iteration++;
+            if($id != null){
+                $user = User::find($id);
+                if (($request->author[$iteration] != $user->name . " " . $user->surname) && ($request->author[$iteration] != $user->name)){
+                    $id = null;
+                }
+            }
             if ($id == null){
                 if ($request->author[$iteration] != null){
                     $slug = SlugService::createSlug(User::class, 'slug', $request->author[$iteration]);
@@ -235,6 +255,11 @@ class PostsController extends Controller
                 }
             }
             if ($id != null) {
+                $user = User::find($id);
+                if (!$user){
+                    session()->flash('user_error', 'Oops... Përdoruesi nuk u gjet.');
+                    return back();
+                }
                 $user = User::where('id', $id)->first();
                 if (!$user->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
                     $user->posts()->attach($post->id);

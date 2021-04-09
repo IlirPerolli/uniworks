@@ -87,9 +87,16 @@
                         {{session('user_error')}}
                     </div>
                 @endif
+                <br>
                 @if(session()->has('duplicate_username'))
                     <div class="alert alert-danger" role="alert">
                         {{session('duplicate_username')}}
+                    </div>
+                @endif
+                <br>
+                @if(session()->has('user_error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{session('user_error')}}
                     </div>
                 @endif
 

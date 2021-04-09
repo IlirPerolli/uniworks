@@ -79,7 +79,13 @@ class UserChangePhotoController extends Controller
                     unlink(public_path() .'/images/'. $user->photo->name);
                 }
             }
-            $name = time() . $file->getClientOriginalName();
+            if (strpos($file->getClientOriginalName(),'chat') !== false) {
+                $file_name = $file->getClientOriginalName();
+                $name = time().str_replace("chat",$user->username,$file_name); //Per shkak te serverit qe se perkrah fjalen chat
+            }
+            else{
+                $name = time() . $file->getClientOriginalName();
+            }
             $image_resize = Image::make($file->getRealPath());
             $image_resize->fit(300, 300);
             $image_resize->save('images/'.$name);

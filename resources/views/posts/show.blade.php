@@ -55,7 +55,7 @@
 
         <div class="user-post-pdf">
 {{--            <h2>PDF Example with iframe</h2>--}}
-            <embed src="/files/{{$post->file->name}}" width="50%" height="500px" style="border: 5px solid gray">
+            <embed src="/files/{{$post->file->name}}" width="100%" height="600px" style="border: 5px solid gray">
             </embed>
 
         </div>
