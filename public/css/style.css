@@ -1101,10 +1101,8 @@ label:focus,
     opacity: 0.9;
 }
 .upload-photo-btn{
-    display: block;
-    width: 40%;
-    border-radius: 30px;
-    text-align: center;
+    width: 140px;
+    height: auto
 }
 .edit-profile-camera svg{
     width:30px;

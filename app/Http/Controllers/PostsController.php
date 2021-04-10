@@ -189,7 +189,7 @@ class PostsController extends Controller
             $suggested_users = User::take(15)->get();
         }
 
-        $other_posts = Post::where('category_id',$post->category_id)->where('id','<>',$post->id)->take(5)->get();;
+        $other_posts = Post::where('id','<>',$post->id)->take(5)->get();;
         return view('posts.show', compact('users', 'post', 'suggested_users', 'other_posts'));
     }
 

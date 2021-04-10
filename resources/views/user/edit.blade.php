@@ -78,20 +78,23 @@
                             <div class="form-group col-md-6">
                                 <label for="name">Emri</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required autocomplete="off">
+                                @error('name')
+                                <span style="color:red">{{ $message }}</span>
+                                <br>
+                                @enderror
                             </div>
-                            @error('name')
-                            <span style="color:red">{{ $message }}</span>
-                            <br>
-                            @enderror
+
                             <div class="form-group col-md-6">
                                 <label for="surname">Mbiemri</label>
                                 <input type="text" class="form-control" id="surname" name="surname" value="{{$user->surname}}" required autocomplete="off">
+                                @error('surname')
+                                <span style="color:red">{{ $message }}</span>
+                                <br>
+                                @enderror
                             </div>
+
                         </div>
-                        @error('surname')
-                        <span style="color:red">{{ $message }}</span>
-                        <br>
-                        @enderror
+
                         <div class="form-group">
                             <label for="location">Qyteti</label>
                             <input type="text" class="form-control" id="city_id" name="city" value="{{$user->city->name}}" autocomplete="off">
@@ -127,6 +130,27 @@
                         <span style="color:red">{{ $message }}</span>
                         <br>
                         @enderror
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name">LinkedIn</label>
+                                <input type="text" class="form-control" placeholder="Shkruani usernamin" id="name" name="linkedin" value="{{$user->linkedin}}" autocomplete="off">
+                                @error('linkedin')
+                                <span style="color:red">{{ $message }}</span>
+                                <br>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="surname">Github</label>
+                                <input type="text" placeholder="Shkruani usernamin" class="form-control" id="github" name="github" value="{{$user->github}}" autocomplete="off">
+                                @error('github')
+                                <span style="color:red">{{ $message }}</span>
+                                <br>
+                                @enderror
+                            </div>
+
+                        </div>
                         <div style="margin-top: 10px">
                         <a href="{{route('user.delete.page')}}" style="color:#dc3545;">Fshij llogarinë</a>
                         </div>

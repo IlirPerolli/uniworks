@@ -143,6 +143,13 @@ class UserProfileController extends Controller
         $user = auth()->user();
         $inputs = $request->all();
 
+        if($request->university_id != null){
+            $university = University::find($request->university_id);
+
+            if (($request->university != $university->name)){
+                $request->university_id = null;
+            }
+        }
 
         if (($request->university_id == null) && ($request->university != $user->university->name)){
             $university = University::create(['name'=>$request->university]);
@@ -153,6 +160,14 @@ class UserProfileController extends Controller
     }
 
 
+        if($request->city_id != null){
+            $city = City::find($request->city_id);
+
+            if (($request->city != $city->name)){
+                $request->city_id = null;
+            }
+        }
+
         if (($request->city_id == null) && ($request->city != $user->city->name)){
             $city = City::create(['name'=>$request->city]);
             $inputs['city_id'] = $city->id;
@@ -161,7 +176,6 @@ class UserProfileController extends Controller
             $inputs['city_id'] = intval($user->city_id);
         }
 //        dd($inputs);
-
         $user->update($inputs);
         session()->flash('updated_user', 'Profili u ndryshua me sukses.');
         return back();

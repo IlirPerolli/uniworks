@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('university_id')->index()->nullable();
             $table->string('city_id')->index()->nullable();
             $table->text('about')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('github')->nullable();
             $table->string('email')->unique()->index()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();

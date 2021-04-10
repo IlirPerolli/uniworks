@@ -1,6 +1,8 @@
 @extends('layouts.index')
 @section('content')
-
+@section('title')
+    <title>Uniworks - Ballina</title>
+@endsection
 
 <!-- Search -->
 <div class="container" id="search-container">

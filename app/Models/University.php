@@ -31,9 +31,14 @@ class University extends Model
         return $this->hasMany(Post::class);
     }
     public function setNameAttribute($value){
-        $name = $value;
-        $name = strtolower($name);
-        $name = ucfirst($name);
-        $this->attributes['name'] = $name;
+        if (ctype_upper($value[0])) {
+        $this->attributes['name'] = $value;
+        } else {
+            $name = $value;
+            $name = strtolower($name);
+            $name = ucfirst($name);
+            $this->attributes['name'] = $name;
+        }
+
     }
 }
