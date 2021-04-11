@@ -149,8 +149,21 @@
                                 <br>
                                 @enderror
                             </div>
-
                         </div>
+
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">www.</div>
+                                </div>
+                                <input type="text" class="form-control" name="website" id="inlineFormInputGroupUsername" value="{{$user->website}}"  autocomplete="off" placeholder="Linku i website">
+                            </div>
+                        </div>
+                        @error('website')
+                        <span style="color:red">{{ $message }}</span>
+                        <br>
+                        @enderror
                         <div style="margin-top: 10px">
                         <a href="{{route('user.delete.page')}}" style="color:#dc3545;">Fshij llogarinë</a>
                         </div>

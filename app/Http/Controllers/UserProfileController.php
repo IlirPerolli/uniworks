@@ -175,7 +175,7 @@ class UserProfileController extends Controller
         else if (($request->city_id  == null) && ($request->city == $user->city->name)){
             $inputs['city_id'] = intval($user->city_id);
         }
-//        dd($inputs);
+
         $user->update($inputs);
         session()->flash('updated_user', 'Profili u ndryshua me sukses.');
         return back();
