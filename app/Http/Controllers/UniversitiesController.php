@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AdminCreateCategoryRequest;
-use App\Models\Category;
+use App\Models\University;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class UniversitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -25,8 +24,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('categories.create', compact('categories'));
+        //
     }
 
     /**
@@ -35,11 +33,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminCreateCategoryRequest $request)
+    public function store(Request $request)
     {
-        Category::create($request->all());
-        session()->flash('added_category', 'Kategoria u krijua me sukses.');
-        return back();
+        //
     }
 
     /**
@@ -50,10 +46,10 @@ class CategoriesController extends Controller
      */
     public function show($slug)
     {
-        $category = Category::findBySlugOrFail($slug);
+        $university = University::findBySlugOrFail($slug);
 
-        $posts = $category->posts()->paginate(20);
-        return view('categories.show',compact('category', 'posts'));
+        $posts = $university->posts()->paginate(20);
+        return view('universities.show',compact('university', 'posts'));
     }
 
     /**
@@ -87,8 +83,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
-        session()->flash('deleted_category', 'Kategoria u fshi me sukses.');
-        return back();
+        //
     }
 }

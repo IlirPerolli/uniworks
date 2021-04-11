@@ -26,19 +26,14 @@ class University extends Model
     protected $fillable = [
         'name','slug'
     ];
-    public function posts(){
-
-        return $this->hasMany(Post::class);
+    public function posts()
+    {
+        return $this->hasOneThrough(Post::class, User::class);
     }
     public function setNameAttribute($value){
-        if (ctype_upper($value[0])) {
-        $this->attributes['name'] = $value;
-        } else {
-            $name = $value;
-            $name = strtolower($name);
-            $name = ucfirst($name);
-            $this->attributes['name'] = $name;
-        }
+
+        $this->attributes['name'] = ucfirst($value);
+
 
     }
 }

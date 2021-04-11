@@ -1530,6 +1530,9 @@ label:focus,
 .user-post-year-published {
     margin-top: 30px;
 }
+.user-post-category {
+    margin-top: 10px;
+}
 
 @media screen and (max-width: 600px) {
     #user-post-container {

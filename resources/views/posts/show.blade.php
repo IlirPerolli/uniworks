@@ -125,6 +125,11 @@
                 <h6>Viti i krijimit: <span>{{$post->year}}</span></h6>
             </em>
         </div>
+        <div class="user-post-category">
+            <em>
+                <h6>Kategoria: <span><a href="{{route('category.show',$post->category->slug)}}" style="color:black; text-decoration: none">{{$post->category->name}}</a></span></h6>
+            </em>
+        </div>
 
 
         <div class="user-post-abstract">

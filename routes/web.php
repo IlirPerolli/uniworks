@@ -60,5 +60,6 @@ Route::get('/category/{category}','App\Http\Controllers\CategoriesController@sho
 Route::get('/search/users','App\Http\Controllers\SearchController@users')->name('search.users');
 Route::get('/search/posts','App\Http\Controllers\SearchController@posts')->name('search.posts');
 Route::get('/article/{post}','App\Http\Controllers\PostsController@show')->name('post.show');
+Route::get('/university/{university}','App\Http\Controllers\UniversitiesController@show')->name('university.show');
 Route::get('/{user}','App\Http\Controllers\UserProfileController@show')->name('user.show');
 
