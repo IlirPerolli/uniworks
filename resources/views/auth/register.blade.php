@@ -1,7 +1,13 @@
-@extends('layouts.app')
-
+@extends('layouts.index')
+@section('styles')
+    <style>
+        .form-group label {
+            margin-top: 0px;
+        }
+    </style>
+@endsection
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 100px">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -81,6 +87,34 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="city_id" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="city_id" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
+                                <input type="hidden" id="id_city" name="city_id">
+                                @error('city')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="university_id" class="col-md-4 col-form-label text-md-right">{{ __('University') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="university_id" type="text" class="form-control @error('university') is-invalid @enderror" name="university" value="{{ old('university') }}" required autocomplete="university">
+                                <input type="hidden" id="id_university" name="university_id">
+                                @error('university')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -116,3 +150,34 @@
     </div>
 </div>
 @endsection
+@section('scripts')
+
+    <script type="text/javascript">
+
+
+        $('#university_id').autocomplete({
+            source:'{!!URL::route('user.university.autocomplete')!!}',
+            minlength:1,
+            autoFocus:true,
+            select:function(e,ui)
+            {
+                $('#university_id').val(ui.item.value);
+                $('#id_university').val(ui.item.id);
+                return false;
+            }
+        });
+        $('#city_id').autocomplete({
+            source:'{!!URL::route('user.city.autocomplete')!!}',
+            minlength:1,
+            autoFocus:true,
+            select:function(e,ui)
+            {
+                $('#city_id').val(ui.item.value);
+                $('#id_city').val(ui.item.id);
+                return false;
+            }
+        });
+
+
+    </script>
+    @endsection
