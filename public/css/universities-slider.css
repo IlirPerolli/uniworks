@@ -1,0 +1,73 @@
+
+/* Universities Slider */
+.uni-slider {
+    height: 250px;
+    margin: auto;
+    margin-top: 75px;
+    margin-bottom: 200px;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.uni-slide-track {
+    display: flex;
+    width: calc(250px * 14);
+    animation: scroll 40s linear infinite;
+}
+
+.uni-slide-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 7));
+    }
+}
+
+.uni-slide {
+    height: 200px;
+    width: 225px;
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    perspective: 100px;
+}
+
+.uni-slide img {
+    width: 100%;
+}
+
+.uni-slide img:hover {
+    transform: translateZ(10px);
+    transition: transform .5s;
+}
+
+.uni-slider::before,
+.uni-slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    content: " ";
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.uni-slider::before {
+    top: 0;
+    left: 0;
+}
+
+.uni-slider::after {
+    top: 0;
+    right: 0;
+    transform: rotateZ(180deg);
+}
+
+

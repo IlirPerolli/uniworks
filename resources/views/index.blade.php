@@ -41,45 +41,13 @@
         <h6>Disa artikuj</h6>
 
         <div class="row random-articles-content">
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
+            @foreach($tags as $tag)
+                <div class="col">
+                    <h3><a href="{{route('tag.show',$tag->slug)}}">{{$tag->name}}</a></h3>
+                </div>
+            @endforeach
 
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
 
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
-
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
-
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
-
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
-
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
-
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
-
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
-
-            <div class="col">
-                <h3><a href="#">Prova</a></h3>
-            </div>
 
         </div>
 

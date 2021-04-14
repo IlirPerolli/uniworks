@@ -15,6 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/individual-posts-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/navbar-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/people-you-may-know-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/post-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/primary-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/universities-slider.css')}}">
+    <link rel="stylesheet" href="{{asset('css/userprofile-style.css')}}">
 
     <script src="https://cdn.jsdelivr.net/npm/heroicons@0.4.2/index.min.js"></script>
 

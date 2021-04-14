@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 Route::get('/',function(){
-   return view('index');
+    $tags = \App\Models\Tag::take(14)->get();
+   return view('index',compact('tags'));
 })->name('index');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
@@ -57,6 +58,7 @@ Route::middleware('auth',)->group(function(){
 });
 
 Route::get('/category/{category}','App\Http\Controllers\CategoriesController@show')->name('category.show');
+Route::get('/tag/{tag}','App\Http\Controllers\TagsController@show')->name('tag.show');
 Route::get('/search/users','App\Http\Controllers\SearchController@users')->name('search.users');
 Route::get('/search/posts','App\Http\Controllers\SearchController@posts')->name('search.posts');
 Route::get('/article/{post}','App\Http\Controllers\PostsController@show')->name('post.show');

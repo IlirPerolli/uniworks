@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\File;
 use App\Models\Photo;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,7 +46,7 @@ class PostsController extends Controller
      */
     public function store(UserStorePostRequest $request)
     {
-//        dd($request->all());
+
         $user = auth()->user();
         $input = $request->all();
 
@@ -130,6 +131,16 @@ class PostsController extends Controller
 
         if (!auth()->user()->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
             auth()->user()->posts()->attach($post->id);//krijo postim per vete
+        }
+        foreach (explode(',',$request->tags) as $tag){
+            if (Tag::where('name',$tag)->exists()){
+                $tag = Tag::where('name',$tag)->first();
+                $post->tags()->attach($tag->id);
+            }
+            else{
+                $tag = Tag::create(['name'=>$tag]);
+                $post->tags()->attach($tag->id);
+            }
         }
         session()->flash('added_post', 'Postimi u krijua me sukses.');
     return back();
@@ -291,14 +302,19 @@ class PostsController extends Controller
      */
     public function destroy($slug)
     {
-        $post = Post::findBySlugOrFail($slug);
 
+        $post = Post::findBySlugOrFail($slug);
         if (auth()->user()->id != $post->originalUser->id){ //nese eshte pronari i postimit atehere lejo
             abort(403, 'Unauthorized action.');
         }
         foreach ($post->user as $user){
             $user->posts()->detach($post->id);
         }
+
+        foreach ($post->tags as $tag){
+            $post->tags()->detach($tag->id);
+        }
+
         if (file_exists(public_path() .'/files/'. $post->file->name)) {//kontrollo nese ekziston foto ne storage para se te fshihet
             unlink(public_path() .'/files/'. $post->file->name);
         }

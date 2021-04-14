@@ -104,6 +104,10 @@ class UserDeleteAccountController extends Controller
                   $user->posts()->detach($post->id);
               }
               }
+               foreach ($post->tags as $tag){
+                   $post->tags()->detach($tag->id);
+               }
+
 
                $post->delete();
            }

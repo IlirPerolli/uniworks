@@ -1,4 +1,5 @@
 @extends('layouts.index')
+<link rel="stylesheet" href="{{asset('css/register-style.css')}}">
 @section('styles')
     <style>
         .form-group label {
@@ -8,145 +9,175 @@
 @endsection
 @section('content')
 <div class="container" style="margin-top: 100px">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <div class="register-container">
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+        <h1 class="register-title">Krijo llogari</h1>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+        <form class="register-form" method="POST" action="{{ route('register') }}">
+            @csrf
+            <div class="register-form-row">
+                <label for="first-name" class="register-form-label">Emri</label>
+                <div>
+                    <input type="text" id="first-name" name="name" class="register-form-input" value="{{old('name')}}" required autocomplete="off" autofocus>
+                    @error('name')
 
-                            <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+                    <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
 
-                                @error('surname')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                @error('username')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-4"></div>
-
-                            <div class="col-md-6">
-                                <div class="custom-control custom-radio custom-control-inline" >
-                                    <input type="radio" id="gender" name="gender" {{ old('gender') == 0 ? 'checked' : ''}} class="custom-control-input" value="0">
-                                    <label class="custom-control-label" for="gender">Femer</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="gender1" name="gender" {{ old('gender') == 1 ? 'checked' : ''}} class="custom-control-input" value="1">
-                                    <label class="custom-control-label" for="gender1">Mashkull</label>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="city_id" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="city_id" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
-                                <input type="hidden" id="id_city" name="city_id">
-                                @error('city')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="university_id" class="col-md-4 col-form-label text-md-right">{{ __('University') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="university_id" type="text" class="form-control @error('university') is-invalid @enderror" name="university" value="{{ old('university') }}" required autocomplete="university">
-                                <input type="hidden" id="id_university" name="university_id">
-                                @error('university')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    @enderror
                 </div>
             </div>
-        </div>
+
+            <div class="register-form-row">
+                <label for="last-name" class="register-form-label">Mbiemri</label>
+                <div>
+                    <input type="text" id="last-name" name="surname" class="register-form-input" value="{{old('surname')}}" required autocomplete="off" autofocus>
+                    @error('surname')
+
+                    <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
+
+                    @enderror
+                </div>
+            </div>
+
+            <div class="register-form-row">
+                <div class="username">
+                    <label for="username" class="register-form-label" data-toggle="tooltip" data-placement="bottom"
+                           value="uni.epizy.com/përdoruesi">Përdoruesi
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20"
+                             fill="#006fa5" class="register-form-info-icon">
+                            <path fill-rule="evenodd"
+                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                  clip-rule="evenodd" />
+                        </svg>
+                    </label>
+                </div>
+                <div>
+                    <input type="text" id="username" name="username" class="register-form-input" value="{{ old('username') }}" required autocomplete="off" autofocus>
+                    @error('username')
+
+                    <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
+
+                    @enderror
+                </div>
+            </div>
+
+            <div class="register-form-row">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <input type="radio" id="male" name="gender" {{ old('gender') == 0 ? 'checked' : ''}} value="0">
+                        <label for="male" class="radio-text ml-1 mt-1">Mashkull</label>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <input type="radio"  id="female" {{ old('gender') == 1 ? 'checked' : ''}} name="gender" value="1">
+                        <label for="female" class="radio-text ml-1 mt-1">Femër</label>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <input type="radio" id="other" {{ old('gender') == 2 ? 'checked' : ''}} name="gender" value="2">
+                        <label for="other" class="radio-text ml-1 mt-1">Tjetër</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="register-form-row">
+                <label for="email" class="register-form-label">Email adresa</label>
+                <div>
+                    <input type="email" name="email" id="email" class="register-form-input" value="{{ old('email') }}" required autocomplete="off">
+                    @error('email')
+
+                    <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
+
+                    @enderror
+                </div>
+            </div>
+
+            <div class="register-form-row">
+                <label for="city_id" class="register-form-label">Qyteti</label>
+                <div>
+                    <input type="text" id="city_id" class="register-form-input" name="city" value="{{ old('city') }}" required autocomplete="city">
+                    <input type="hidden" id="id_city" name="city_id" value="{{old('city_id')}}">
+                    @error('city')
+
+                    <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
+
+                    @enderror
+                </div>
+            </div>
+
+            <div class="register-form-row">
+                <label for="university_id" class="register-form-label">Universiteti</label>
+                <div>
+                    <input type="text" id="university_id" class="register-form-input" name="university" value="{{ old('university') }}" required autocomplete="university">
+                    <input type="hidden" id="id_university" name="university_id" value="{{old('university_id')}}">
+                    @error('university')
+
+                    <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
+
+                    @enderror
+                </div>
+            </div>
+
+            <div class="register-form-row">
+                <div class="password">
+                    <label for="password" class="register-form-label" data-toggle="tooltip" data-placement="bottom"
+                           value="Fjalëkalimi duhet të jetë se paku 8 karaktere i gjatë.">Fjalëkalimi
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20"
+                             fill="#006fa5" class="register-form-info-icon">
+                            <path fill-rule="evenodd"
+                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                  clip-rule="evenodd" />
+                        </svg>
+                    </label>
+                </div>
+
+                <div>
+                    <input type="password" name="password" id="password" class="register-form-input" required autocomplete="new-password">
+                </div>
+            </div>
+
+            <div class="register-form-row">
+                <div class="recheck-password">
+                    <label for="recheck-password" class="register-form-label" data-toggle="tooltip"
+                           data-placement="bottom" value="Fjalëkalimet duhen të përshtaten">Rishkruaj fjalëkalimin
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20"
+                             fill="#006fa5" class="register-form-info-icon">
+                            <path fill-rule="evenodd"
+                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                  clip-rule="evenodd" />
+                        </svg>
+                    </label>
+                </div>
+
+                <div>
+                    <input type="password" name="password_confirmation" id="recheck-password" class="register-form-input" required autocomplete="new-password">
+                    @error('password')
+
+                    <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
+
+                    @enderror
+                </div>
+            </div>
+
+
+            <div class="form-buttons">
+                <button class="register-now-button btn" type="submit">
+                    <h6>Regjistrohu</h6>
+                </button>
+
+                <div class="login-now-button btn">
+                    <a href="{{route('login')}}">
+                        <h6>Kam llogari</h6>
+                    </a>
+                </div>
+            </div>
+
+        </form>
+
+
+
     </div>
 </div>
 @endsection

@@ -1,0 +1,137 @@
+
+/* LOGIN STYLE */
+
+.login-container {
+    /* border: 1px solid red; */
+    max-width: 800px;
+    margin: auto;
+    margin-top: 130px;
+    margin-bottom: 150px;
+}
+
+.login-title {
+    font-size: 40px;
+    /* padding-left: 150px; */
+    text-align: center;
+    font-weight: 700;
+}
+
+.login-form {
+    /* border: 1px solid blue; */
+    max-width: 400px;
+    margin: auto;
+}
+
+.login-form-row {
+    margin-top: 40px;
+}
+
+.login-form-label {
+    padding-left: 12px;
+}
+
+.login-form-input {
+    width: 100%;
+    border-radius: 10px;
+    /* background-color: #f4f4f4; */
+    border: 3px solid #f4f4f4;
+    outline: none;
+    padding: 10px 15px;
+    -webkit-box-shadow: 0px 15px 50px -15px rgba(233,233,233,0.9);
+    box-shadow: 0px 15px 50px -15px rgba(233,233,233,0.9);
+}
+
+.forgot-password p {
+    font-size: 12px;
+    color: gray;
+    margin-top: 10px;
+    text-align: right;
+    padding-right: 12px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+}
+
+
+
+/* Button */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-now-button {
+    background-color: #006fa5!important;
+    color: white!important;
+    border-radius: 10px!important;
+    margin-top: 50px!important;
+}
+
+.login-now-button h6 {
+    margin: auto;
+    padding: 5px;
+}
+
+.login-now-button:hover {
+    background-color: #006ea5dc!important;
+    color: white!important;
+}
+
+.register-now-button {
+    background-color: white!important;
+    color: #006fa5!important;
+    /* border: 3px solid #006fa5; */
+    border-radius: 10px!important;
+    margin-top: 50px!important;
+}
+
+.register-now-button h6 {
+    margin: auto;
+    padding: 5px;
+}
+
+.register-now-button:hover {
+    /* background-color: rgb(240, 240, 240); */
+    color: #006ea5dc!important;
+}
+
+.register-now-button a {
+    color: #006fa5!important;
+    text-decoration: none!important;
+}
+
+@media screen and (max-width: 450px) {
+    .login-container {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .login-container {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .login-container {
+        padding: 5px;
+    }
+    .login-form-label {
+        font-size: 14px;
+    }
+    .login-form-input {
+        padding: 8px 12px;
+    }
+    .forgot-password p {
+        font-size: 10px;
+    }
+    .login-now-button h6 {
+        font-size: 14px;
+    }
+    .register-now-button h6 {
+        font-size: 14px;
+    }
+}
+
+

@@ -26,6 +26,9 @@ class Post extends Model
     public function user(){
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+    public function tags(){
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
     public function originalUser(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

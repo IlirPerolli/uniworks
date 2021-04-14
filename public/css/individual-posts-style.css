@@ -1,0 +1,377 @@
+
+/* Individual Posts */
+#user-post-container {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+.user-post-title h1 {
+    text-align: left;
+    font-size: 40px;
+    line-height: 1.5;
+}
+
+.user-post-time-date {
+    margin-top: 20px;
+    color: #006fa5;
+}
+
+.user-post-abstract {
+    margin-top: 50px;
+}
+
+.user-post-partners {
+    margin-top: 25px;
+}
+.user-post-source {
+    margin-top: 50px;
+}
+
+
+.user-post-file-button {
+    margin-top: 25px;
+    max-height: auto;
+}
+
+.file-button {
+    border: 2px solid #dc143c;
+    border-radius: 25px;
+    padding: 0;
+    height: 50px;
+}
+
+.file-button svg {
+    fill: #dc143c;
+}
+
+.file-button:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.vl {
+    display: inline-block;
+    height: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+    align-items: center;
+    border-left: 3px solid lightgray;
+}
+
+.edit-button {
+    color: #006fa5;
+    border: 2px solid #006fa5;
+    border-radius: 25px;
+    padding: 10px 20px 10px 10px;
+    height: 50px;
+    margin-right: 12px;
+}
+
+.edit-button svg {
+    fill: #006fa5;
+}
+
+.edit-button:hover {
+    background-color: rgb(240, 240, 240);
+    color: #006fa5;
+}
+
+.remove-tag-button {
+    color: #006fa5;
+    border: 2px solid #006fa5;
+    border-radius: 25px;
+    padding: 10px 20px 10px 10px;
+    height: 50px;
+}
+
+.remove-tag-button svg {
+    fill: #006fa5;
+}
+
+.remove-tag-button:hover {
+    background-color: rgb(240, 240, 240);
+    color: #006fa5;
+}
+
+.remove-tag-button svg {
+    fill: #006fa5;
+}
+
+.user-post-year-published {
+    margin-top: 30px;
+}
+.user-post-category {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    #user-post-container {
+        margin-top: 120px;
+    }
+}
+
+@media screen and (max-width: 464px) {
+    .vl {
+        height: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .file-button {
+        height: 50px;
+    }
+    .edit-button {
+        padding: 8px 18px 8px 8px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    .remove-tag-button {
+        padding: 8px 18px 8px 8px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 444px) {
+    .vl {
+        height: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .file-button {
+        height: 50px;
+    }
+    .edit-button {
+        padding: 5px 15px 5px 5px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    .remove-tag-button {
+        padding: 5px 15px 5px 5px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .vl {
+        height: 50px;
+        margin-left: 18px;
+        margin-right: 18px;
+    }
+    .file-button {
+        height: 50px;
+    }
+    .file-button svg {
+        width: 80px;
+    }
+    .edit-button {
+        padding-right: 10px;
+        height: 50px;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+    .edit-button svg {
+        width: 25px;
+        height: 20px;
+    }
+    .remove-tag-button {
+        padding-right: 10px;
+        height: 50px;
+        font-size: 15px;
+    }
+    .remove-tag-button svg {
+        width: 25px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .vl {
+        height: 45px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    .file-button {
+        height: 45px;
+    }
+    .file-button svg {
+        width: 75px;
+        height: 30px;
+    }
+    .edit-button {
+        padding-right: 10px;
+        height: 45px;
+        margin-right: 8px;
+        font-size: 14px;
+    }
+    .edit-button svg {
+        width: 22px;
+        height: 18px;
+    }
+    .remove-tag-button {
+        padding-right: 10px;
+        height: 45px;
+        font-size: 14px;
+    }
+    .remove-tag-button svg {
+        width: 22px;
+        height: 18px;
+    }
+}
+
+@media screen and (max-width: 363px) {
+    .vl {
+        height: 40px;
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+    .file-button {
+        height: 40px;
+    }
+    .file-button svg {
+        width: 70px;
+        height: 30px;
+    }
+    .edit-button {
+        padding-right: 10px;
+        height: 40px;
+        margin-right: 8px;
+        font-size: 14px;
+    }
+    .edit-button svg {
+        width: 22px;
+        height: 18px;
+    }
+    .remove-tag-button {
+        padding-right: 10px;
+        height: 40px;
+        font-size: 14px;
+    }
+    .remove-tag-button svg {
+        width: 22px;
+        height: 18px;
+    }
+}
+
+@media screen and (max-width: 353px) {
+    .vl {
+        height: 40px;
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+    .file-button {
+        height: 40px;
+    }
+    .file-button svg {
+        width: 65px;
+        height: 28px;
+    }
+    .edit-button {
+        padding-right: 10px;
+        height: 40px;
+        margin-right: 8px;
+        font-size: 12px;
+    }
+    .edit-button svg {
+        width: 20px;
+        height: 16px;
+    }
+    .remove-tag-button {
+        padding-right: 10px;
+        height: 40px;
+        font-size: 12px;
+    }
+    .remove-tag-button svg {
+        width: 20px;
+        height: 16px;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    .vl {
+        height: 40px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+    .file-button {
+        height: 40px;
+    }
+    .file-button svg {
+        width: 60px;
+        height: 28px;
+    }
+    .edit-button {
+        padding-right: 10px;
+        height: 40px;
+        margin-right: 6px;
+        font-size: 12px;
+    }
+    .edit-button svg {
+        width: 18px;
+        height: 14px;
+    }
+    .remove-tag-button {
+        padding-right: 10px;
+        height: 40px;
+        font-size: 12px;
+    }
+    .remove-tag-button svg {
+        width: 18px;
+        height: 14px;
+    }
+}
+
+@media screen and (max-width: 312px) {
+    .vl {
+        height: 35px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .file-button {
+        height: 35px;
+    }
+    .file-button svg {
+        width: 55px;
+        height: 25px;
+    }
+    .edit-button {
+        padding-right: 8px;
+        height: 35px;
+        margin-right: 4px;
+        font-size: 12px;
+    }
+    .edit-button svg {
+        width: 16px;
+        height: 12px;
+    }
+    .remove-tag-button {
+        padding-right: 8px;
+        height: 35px;
+        font-size: 12px;
+    }
+    .remove-tag-button svg {
+        width: 16px;
+        height: 12px;
+    }
+}
+
+
+
+.partners-photo {
+    display: flex;
+    overflow: hidden;
+}
+
+.partners-photo img {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 4px solid white;
+    margin-right: -14px;
+}
+
+.user-post-pdf {
+    margin-top: 50px;
+}
+
+.user-post-about-author {
+    margin-top: 50px;
+}
