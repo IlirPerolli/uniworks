@@ -40,8 +40,10 @@
                             <label for="username">Shkruani usernamin e ri</label>
                             <input type="text" class="form-control" name="username" id="username" autocomplete="off">
                         </div>
-                        <span style="font-size: 13px"><i><strong>Kujdes!</strong> Vetem një herë lejohet ndërrimi i usernamit.</i></span>
-                       <br>
+                        <div style=" margin-top: 10px; padding-left: 12px">
+                        <span style="font-size: 13px;color:gray"><i><strong>Kujdes!</strong> Vetem një herë lejohet ndërrimi i usernamit.</i></span>
+                        </div>
+                            <br>
                         @if (session('username_exceeded'))
                             <span style="color:red">{{ session('username_exceeded') }}</span>
                             <br>

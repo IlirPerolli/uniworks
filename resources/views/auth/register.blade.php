@@ -163,15 +163,14 @@
 
 
             <div class="form-buttons">
-                <button class="register-now-button btn" type="submit">
-                    <h6>Regjistrohu</h6>
-                </button>
-
                 <div class="login-now-button btn">
                     <a href="{{route('login')}}">
                         <h6>Kam llogari</h6>
                     </a>
                 </div>
+                <button class="register-now-button btn" type="submit">
+                    <h6>Regjistrohu</h6>
+                </button>
             </div>
 
         </form>

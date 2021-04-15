@@ -17,15 +17,26 @@
         }
 
         .bootstrap-tagsinput{
-            width: 100%;
-            padding: 0;
+            width: 100% !important;
+            border-radius: 10px!important;
+            /* background-color: #f4f4f4; */
+            border: 3px solid #f4f4f4!important;
+            outline: none!important;
+            -webkit-box-shadow: 0px 15px 50px -15px rgba(233,233,233,0.9)!important;
+            box-shadow: 0px 15px 50px -15px rgba(233,233,233,0.9)!important;
+            padding-left:10px;
             text-indent: 5px;
-        }
-        .label-info{
-            background-color: #17a2b8;
+
 
         }
-        .label {
+        .label-info{
+            background-color: #eee;
+
+        }
+        .bootstrap-tagsinput .tag{
+            color:black;
+        }
+        .bootstrap-tagsinput .label {
             display: inline-block;
             padding: 1em .4em;
             font-size: 75%;
@@ -37,15 +48,20 @@
             border-radius: .25rem;
             transition: color .15s ease-in-out,background-color .15s ease-in-out,
             border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin-top: 10px;
         }
     </style>
 @endsection
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha256-aAr2Zpq8MZ+YA/D6JtRD3xtrwpEz2IqOS+pWD/7XKIw=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js" integrity="sha512-VvWznBcyBJK71YKEKDMpZ0pCVxjNuKwApp4zLF3ul+CiflQi6aIJR+aZCP/qWsoFBA28avL5T5HA+RE+zrGQYg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput-angular.min.js" integrity="sha512-KT0oYlhnDf0XQfjuCS/QIw4sjTHdkefv8rOJY5HHdNEZ6AmOh1DW/ZdSqpipe+2AEXym5D0khNu95Mtmw9VNKg==" crossorigin="anonymous"></script>
+@section('imports')
+    <!-- Taggable -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha256-aAr2Zpq8MZ+YA/D6JtRD3xtrwpEz2IqOS+pWD/7XKIw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js" integrity="sha512-VvWznBcyBJK71YKEKDMpZ0pCVxjNuKwApp4zLF3ul+CiflQi6aIJR+aZCP/qWsoFBA28avL5T5HA+RE+zrGQYg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput-angular.min.js" integrity="sha512-KT0oYlhnDf0XQfjuCS/QIw4sjTHdkefv8rOJY5HHdNEZ6AmOh1DW/ZdSqpipe+2AEXym5D0khNu95Mtmw9VNKg==" crossorigin="anonymous"></script>
+    <!-- End of Taggable -->
+@endsection
 @section('content')
 
     <!-- Add Article -->
@@ -78,7 +94,7 @@
                 <br>
                 @enderror
 
-               <div style="margin-bottom: -20px; margin-top: 10px">Autoret</div>
+               <div style="margin-bottom: -50px; margin-top: 30px">Autoret</div>
                 <div class="form-row">
 
                     <div class="col-sm-12 col-md-6">
@@ -175,7 +191,7 @@
                                     <div class='file-input' style="border:1px solid #ced4da;">
 
                                         <input type='file' name="file_id">
-                                        <span class='button'>Zgjedh</span>
+                                        <span class='button' style="font-size: 14px; border-radius: 10px">Zgjedh</span>
 
                                             <span class='label' data-js-label >Zgjedhni artikullin...</span>
                                             </div>

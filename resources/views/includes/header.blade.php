@@ -13,7 +13,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-
+    @yield('imports')
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/individual-posts-style.css')}}">
     <link rel="stylesheet" href="{{asset('css/navbar-style.css')}}">
@@ -95,14 +95,18 @@
                             </li>
                             @endif
                             @if(auth()->check())
+
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="login-btn nav-link" href="{{route('logout')}}">Shkyçu</a>
                                 </li>
                                 @else
+                                @if( (!Route::is('login')) && !Route::is('register'))
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="login-btn nav-link" href="{{route('login')}}">Kyçu</a>
                                 </li>
+                                    @endif
                             @endif
+
 
                         </ul>
                     </div>

@@ -7,7 +7,7 @@
 }
 
 #content-row {
-    width: 95%;
+    width: 60%;
     margin: auto;
     margin-top: 50px;
 }
@@ -88,6 +88,7 @@
         padding-left: 0px !important;
         padding-right: 0px !important;
         border: none !important;
+        box-shadow: none !important;
     }
     .file-input > .button {
         width: 100%;
@@ -113,7 +114,11 @@
 /*    border-radius: 0;*/
 /*    font-size: 15px;*/
 /*}*/
-
+@media screen and (max-width: 960px){
+    #content-row {
+        width: 95% !important;
+    }
+}
 @media screen and (max-width: 400px) {
     .form-group textarea[placeholder] {
         font-size: 13px;

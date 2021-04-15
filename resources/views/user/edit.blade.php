@@ -155,7 +155,7 @@
                             <label for="website">Website</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text">www.</div>
+                                    <div class="input-group-text" id="website-button">www.</div>
                                 </div>
                                 <input type="text" class="form-control" name="website" id="inlineFormInputGroupUsername" value="{{$user->website}}"  autocomplete="off" placeholder="Linku i website">
                             </div>

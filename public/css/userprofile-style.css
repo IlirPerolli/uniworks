@@ -267,3 +267,15 @@
     margin-right: -14px;
 }
 
+#inlineFormInputGroupUsername{
+    width: auto !important;
+    border-left:none !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+
+}
+#website-button{
+    border: 3px solid #f4f4f4!important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}

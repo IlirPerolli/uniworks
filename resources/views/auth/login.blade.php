@@ -12,10 +12,10 @@
             @csrf
             <div class="login-form-row">
                 <div class="username">
-                    <label for="email" class="login-form-label">{{ __('Përdoruesi') }}</label>
+                    <label for="email" class="login-form-label">{{ __('Emaili') }}</label>
                 </div>
                 <div>
-                    <input type="email" name="email" id="email" class="login-form-input" placeholder="Shkruani emailin" value="{{old('email')}}" autocomplete="off">
+                    <input type="email" name="email" id="email" class="login-form-input" value="{{old('email')}}" autocomplete="off">
                     @error('email')
 
                     <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
@@ -31,7 +31,7 @@
                 </div>
                 <div>
 
-                    <input type="password" name="password" id="password" class="login-form-input" placeholder="Shkruani fjalëkalimin">
+                    <input type="password" name="password" id="password" class="login-form-input">
                     @error('password')
                     <span style="color: #e3342f; font-size: 14px; padding-left: 12px">{{ $message }}</span>
                     @enderror
@@ -54,15 +54,14 @@
 
 
             <div class="form-buttons">
-                <button class="login-now-button btn">
-                    <h6>Kyçu</h6>
-                </button>
-
                 <div class="register-now-button btn">
                     <a href="{{route('register')}}">
                         <h6>Regjistrohu tani!</h6>
                     </a>
                 </div>
+                <button class="login-now-button btn">
+                    <h6>Kyçu</h6>
+                </button>
             </div>
 
         </form>
