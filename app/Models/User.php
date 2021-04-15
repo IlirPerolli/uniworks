@@ -47,6 +47,10 @@ class User extends Authenticatable
     public function city(){
         return $this->belongsTo(City::class);
     }
+    public function bookmark()
+    {
+        return $this->belongsToMany(Post::class, 'bookmarks', 'user_id', 'post_id')->withTimestamps()->withPivot('user_id', 'post_id');
+    }
     public function isAdmin(){
         if ($this->role->name == "administrator"){
             return true;

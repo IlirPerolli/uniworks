@@ -1,5 +1,7 @@
 @extends('layouts.index')
+@section('imports')
 <link rel="stylesheet" href="{{asset('css/login-style.css')}}">
+@endsection
 @section('content')
 <div class="container">
 

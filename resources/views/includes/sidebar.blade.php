@@ -1,3 +1,14 @@
+@section('styles')
+    <style>
+        input[type=text], input[type=number]{
+
+            height: 50px !important;
+        }
+        select{
+            height: 50px !important;
+        }
+    </style>
+@endsection
 <div class="col-md-3" id="posts-preferences">
     <h5>Preferencat</h5>
     <form method="GET" action="{{route('search.posts')}}">

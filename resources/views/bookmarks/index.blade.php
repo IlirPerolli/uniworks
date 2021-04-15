@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('title')
-    <title>{{'Kategoria - '.$category->name}}</title>
+{{--    <title>{{'Kategoria - '.$category->name}}</title>--}}
 @endsection
 
 @section('content')
@@ -14,10 +14,10 @@
         <div class="user-profile-wrapper">
             <div class="row" id="user-profile-photo-row">
                 <div class="col" id="user-profile-photo">
-                    <img src="/images/category.png" alt="">
+                    <img src="/images/bookmarks.png" alt="">
 
                     <div class="user-profile-name">
-                        <h5>Kategoria: {{$category->name}}
+                        <h5>Postimet e ruajtura
 
                         </h5>
                     </div>

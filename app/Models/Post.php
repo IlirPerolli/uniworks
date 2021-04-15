@@ -40,4 +40,8 @@ class Post extends Model
 
         return $this->belongsTo(File::class);
     }
+    public function bookmark()
+    {
+        return $this->belongsToMany(Post::class, 'bookmarks', 'post_id', 'user_id')->withTimestamps()->withPivot('user_id', 'post_id');
+    }
 }

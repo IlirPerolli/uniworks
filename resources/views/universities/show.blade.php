@@ -14,7 +14,7 @@
         <div class="user-profile-wrapper">
             <div class="row" id="user-profile-photo-row">
                 <div class="col" id="user-profile-photo">
-                    <img src="/images/university.jfif" alt="">
+                    <img src="/images/university-default.png" alt="">
 
                     <div class="user-profile-name">
                         <h5>Universiteti: {{$university->name}}

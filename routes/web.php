@@ -52,7 +52,9 @@ Route::middleware('auth',)->group(function(){
     Route::get('/user/changePhoto', 'App\Http\Controllers\UserChangePhotoController@index')->name('user.photo.edit');
     Route::patch('/user/changePhoto/update', 'App\Http\Controllers\UserChangePhotoController@update')->name('user.photo.update');
     Route::patch('/user/changePhoto/destroy', 'App\Http\Controllers\UserChangePhotoController@destroy')->name('user.photo.destroy');
-
+    Route::get('/bookmarks','App\Http\Controllers\BookmarksController@index')->name('bookmarks.index');
+    Route::post('/post/{post}/wishlist/add','App\Http\Controllers\BookmarksController@store')->name('bookmarks.store');
+    Route::delete('/post/{post}/wishlist/destroy','App\Http\Controllers\BookmarksController@destroy')->name('bookmarks.destroy');
     Route::get('/user/deleteAccount', 'App\Http\Controllers\UserDeleteAccountController@index')->name('user.delete.page');
     Route::delete('/user/destroy', 'App\Http\Controllers\UserDeleteAccountController@destroy')->name('user.destroy');
 });

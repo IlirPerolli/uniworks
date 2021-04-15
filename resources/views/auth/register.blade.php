@@ -1,5 +1,7 @@
 @extends('layouts.index')
+@section('imports')
 <link rel="stylesheet" href="{{asset('css/register-style.css')}}">
+@endsection
 @section('styles')
     <style>
         .form-group label {
