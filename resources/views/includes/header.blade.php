@@ -168,7 +168,8 @@
         </div>
     </div>
 </div>
+@if (!Route::is('index') && !Route::is('login') && !Route::is('register') && !Route::is('search.*'))
 <div class="br-mob">
     <br><br>
 </div>
-
+    @endif

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserSearchRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -17,7 +18,7 @@ class SearchController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function users(Request $request)
+    public function users(UserSearchRequest $request)
     {
 
         $input = $request->q;
@@ -52,9 +53,11 @@ class SearchController extends Controller
         return redirect()->route('index'); //nese inputi eshte i zbrazet
     }
 
-        public function posts(Request $request)
+        public function posts(UserSearchRequest $request)
         {
+
             $input = $request->q;
+
             $categories = Category::all();
             if ($request->order == 'asc'){$order = "asc";}
             else if ($request->order == 'desc'){$order = "desc";}

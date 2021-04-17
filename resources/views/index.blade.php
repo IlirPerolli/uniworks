@@ -13,6 +13,7 @@
     @if(session('min_length_input'))
         <h6 style="color:red; margin-left: 15px">{{session('min_length_input')}}</h6>
     @endif
+
         <form>
             <div class="search-wrapper">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20" fill="#006fa5">
@@ -21,7 +22,10 @@
                       clip-rule="evenodd" />
             </svg><input class="main-search-bar" type="text" id="q" name="q" placeholder="Kërko..." autocomplete="off">
             </div>
+            @error('q')
 
+            <span style="color: #e3342f; font-size: 14px;">{{ $message }}</span>
+            @enderror
 
     <div class="works-users-radio">
         <input type="radio" id="users" name="search" value="posts" checked>

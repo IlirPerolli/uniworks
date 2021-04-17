@@ -17,7 +17,7 @@
             @csrf
             <div class="login-form-row">
                 <div class="username">
-                    <label for="email" class="login-form-label">{{ __('Emaili') }}</label>
+                    <label for="email" class="login-form-label">{{ __('Email adresa') }}</label>
                 </div>
                 <div>
                     <input type="email" name="email" id="email" class="login-form-input" value="{{old('email')}}" autocomplete="off">

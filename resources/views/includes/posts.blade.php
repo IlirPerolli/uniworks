@@ -1,3 +1,6 @@
+@error('q')
+<span style="color: #e3342f; font-size: 14px;">{{ $message }}</span>
+@enderror
 
 @if(isset($posts))
     @if(count($posts)>0)

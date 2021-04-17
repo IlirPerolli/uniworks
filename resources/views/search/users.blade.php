@@ -9,7 +9,11 @@
 
 
 <div class="search-content">
+
     <div class="container">
+        @error('q')
+        <span style="color: #e3342f; font-size: 14px;">{{ $message }}</span>
+        @enderror
         <div class="searched-result-text">
             @if(isset($users_from_search))
                 <h4>Rezultatet e kërkuara për: {{$_GET['q']}} <span style="font-size: 15px; color:grey">({{$users_count}} Rezultate)</span></h4>
