@@ -30,7 +30,9 @@
 }
 
 #pymk li:hover {
-    box-shadow: 0px 0px 15px 0px #838383;
+    /*box-shadow: 0px 0px 15px 0px #838383;*/
+    -webkit-box-shadow: 0px 0px 15px 0px #DADADA;
+    box-shadow: 0px 0px 15px 0px #DADADA;
 }
 
 .pymk-item {

@@ -7,15 +7,20 @@
 <!-- Search -->
 <div class="container" id="search-container">
 
-    <div class="logo-text">
-        <h1>Uniworks</h1>
-    </div>
+
+        <h1 class="logo-text">Uniworks</h1>
+
     @if(session('min_length_input'))
         <h6 style="color:red; margin-left: 15px">{{session('min_length_input')}}</h6>
     @endif
         <form>
-        <i class="fas fa-search"></i><input class="main-search-bar" type="text" id="q" name="q" placeholder="Kërko..." autocomplete="off">
-
+            <div class="search-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20" fill="#006fa5">
+                <path fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd" />
+            </svg><input class="main-search-bar" type="text" id="q" name="q" placeholder="Kërko..." autocomplete="off">
+            </div>
 
 
     <div class="works-users-radio">

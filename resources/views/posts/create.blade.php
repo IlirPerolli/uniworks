@@ -205,7 +205,7 @@
                     </div>
 
     <div class="form-group">
-                    <label>Tagjet :</label>
+                    <label>Fjalët kyçe: </label>
                     <input type="text" data-role="tagsinput" name="tags" class="form-control"  value="{{ old('tags') }}" >
     </div>
             <button class="post-article-btn btn">
