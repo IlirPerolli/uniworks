@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('css/search-style.css')}}">
     <link rel="stylesheet" href="{{asset('css/universities-slider.css')}}">
     <link rel="stylesheet" href="{{asset('css/userprofile-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/search-navbar-style.css')}}">
 
     <script src="https://cdn.jsdelivr.net/npm/heroicons@0.4.2/index.min.js"></script>
 
@@ -91,7 +92,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse order-1 order-md-2" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto py-4 py-md-0">
 
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -145,9 +146,29 @@
 
                         </ul>
                     </div>
+                    @if (!Route::is('index') && !Route::is('login') && !Route::is('register') && !Route::is('search.*'))
+                    <div class="navbar-search-wrapper order-2 order-md-1">
+                        <form action="{{route('search.posts')}}" method="GET">
+                            @csrf
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none"
+                             viewBox="0 0 24 24" stroke="#006fa5">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
 
+                            <input class="navbar-search-bar" type="text" placeholder="Kërko..." name="q" autocomplete="off" value="{{isset($_GET['q'])? $_GET['q']: ""}}" style="height: auto!important;">
+
+
+                        </form>
+                    </div>
+                        @endif
                 </nav>
+
             </div>
         </div>
     </div>
 </div>
+<div class="br-mob">
+    <br><br>
+</div>
+
