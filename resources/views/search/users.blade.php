@@ -29,7 +29,7 @@
 
                         <a href="{{route('user.show',$user->slug)}}">    <h6 class="card-title">{{$user->name. " ". $user->surname}}</h6>   </a>
 
-                        @if ($user->university_id != null)  <a href="{{route('user.show',$user->slug)}}"> <p class="text-muted" style="text-align: center">{{$user->university->name}}</p></a>@endif
+                        @if ($user->university_id != null)  <a href="{{route('university.show',$user->university->slug)}}"> <p class="text-muted" style="text-align: center">{{$user->university->name}}</p></a>@endif
 
                     </div>
 

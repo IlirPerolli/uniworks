@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+    <title>Uniworks - Regjistrohu</title>
+@endsection
 @section('imports')
 <link rel="stylesheet" href="{{asset('css/register-style.css')}}">
 @endsection

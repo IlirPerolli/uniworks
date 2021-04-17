@@ -1,7 +1,7 @@
 
 <div class="search-header">
-    <div class="container" id="post-search-container">
-        <div class="post-search-wrapper">
+    <div class="container" id="search-results-container">
+        <div class="search-results-wrapper">
 
             <form action="{{route('search.posts')}}" method="GET">
                 @csrf

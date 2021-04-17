@@ -1,0 +1,381 @@
+
+/* Search */
+.search-header {
+    margin-top: 150px;
+}
+
+#search-results-container {
+    padding: 0;
+}
+.search-wrapper {
+    border: 1px solid red;
+    width: 60%;
+    margin: 20px auto;
+    padding: 0 0 0 20px;
+    border: 3px solid #f0f0f0;
+    border-radius: 20px;
+}
+
+.search-wrapper svg {
+    margin-bottom: 3px;
+}
+
+.main-search-bar {
+    /* border: 1px solid red; */
+    width: 95%;
+    border: 0;
+    border-radius: 20px;
+    padding: 12px 20px 12px 10px;
+    outline: none;
+}
+
+
+
+
+.search-results-wrapper {
+    border: 1px solid red;
+    width: 60%;
+    /* margin: auto; */
+    /* margin: 20px auto; */
+    padding: 0 0 0 20px;
+    border: 3px solid #f0f0f0;
+    border-radius: 20px;
+}
+
+.search-results-wrapper svg {
+    margin-bottom: 3px;
+}
+
+.main-search-bar {
+    /* border: 1px solid red; */
+    width: 95%;
+    border: 0;
+    border-radius: 20px;
+    padding: 12px 20px 12px 10px;
+    outline: none;
+}
+
+.main-search-bar::placeholder{
+    color: #7f7e7e;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .search-results-wrapper {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .search-results-wrapper {
+        width: 80%;
+    }
+    .main-search-bar {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .searched-user-profile-col {
+        margin: auto;
+        margin-top: 20px;
+        width: max-content;
+    }
+    .search-results-wrapper {
+        width: 100%;
+    }
+    .main-search-bar {
+        width: 90%;
+    }
+    #search-results-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .search-wrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .search-results-wrapper {
+        width: 100%;
+        padding: 0 0 0 5px;
+    }
+    .search-results-wrapper svg {
+        width: 22px;
+        height: 22px;
+    }
+    .main-search-bar {
+        width: 85%;
+        padding: 10px 18px 10px 8px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    input.main-search-bar {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    input.main-search-bar {
+        font-size: 14px;
+    }
+    .search-results-wrapper svg {
+        width: 20px;
+        height: 20px;
+        margin-bottom: 2px;
+    }
+    .main-search-bar {
+        padding: 8px 16px 8px 6px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+
+    .searched-result-text {
+        margin-top: 60px;
+    }
+    .searched-result-text h4 {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .search-wrapper {
+        width: 64%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .search-wrapper {
+        width: 75%;
+    }
+    .main-search-bar {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .search-wrapper {
+        width: 100%;
+    }
+
+}
+
+
+
+@media screen and (max-width: 430px) {
+    .logo-text  {
+        font-size: 4.5em;
+    }
+
+}
+@media screen and (max-width: 355px) {
+    .searched-result-text h4 {
+        font-size: 20px;
+    }
+    .main-search-bar {
+        width: 80%;
+        padding: 10px 18px 10px 8px;
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    .logo-text  {
+        font-size: 4em;
+    }
+    .search-wrapper {
+
+        padding: 0 0 0 5px;
+    }
+    .search-wrapper svg {
+        width: 22px;
+        height: 22px;
+    }
+    .main-search-bar {
+        width: 85%;
+        padding: 10px 18px 10px 8px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .logo-text  {
+        font-size: 3.5em;
+    }
+    input.main-search-bar {
+        font-size: 15px;
+    }
+
+}
+
+
+@media screen and (max-width: 280px) {
+    .logo-text  {
+        font-size: 3em;
+    }
+    input.main-search-bar {
+        font-size: 14px;
+    }
+    .search-wrapper {
+        border-radius: 15px;
+    }
+
+    .search-wrapper svg {
+        width: 20px;
+        height: 20px;
+        margin-bottom: 2px;
+    }
+    .main-search-bar {
+        padding: 8px 16px 8px 6px;
+    }
+}
+
+/* Search Container */
+#search-container {
+    margin-top: 150px;
+    text-align: center;
+}
+.logo-text i {
+    color: #006fa5;
+}
+
+.works-users-radio {
+    margin-top: 30px;
+}
+
+.works-users-radio svg {
+    width: 25px;
+    margin-bottom: 6px;
+    margin-left: 2px;
+    color: #7f7e7e;
+}
+
+.logo-text {
+    font-size: 5em;
+    color: #006fa5;
+    margin: auto;
+}
+
+
+/* Search Content */
+.search-content {
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+.searched-result-text {
+    margin-top: 75px;
+}
+
+.searched-user-profile {
+    text-align: center;
+    border: 0;
+    margin-top: 40px;
+    width: 100px;
+}
+
+.searched-user-profile img {
+    border-radius: 50%;
+}
+
+.searched-user-profile p {
+    font-size: 12px;
+}
+
+.searched-user-profile-content {
+    padding: 0px;
+}
+
+.searched-user-profile-content h6 {
+    margin-top: 15px;
+}
+
+.searched-user-profile-content p {
+    margin-top: -15px;
+}
+
+.searched-user-profile-content a {
+    color: black;
+}
+
+.searched-user-profile-content a:hover {
+    color: #006fa5;
+}
+
+
+@media screen and (max-width: 768px) {
+    .searched-user-profile {
+        margin: auto;
+        margin-top: 40px;
+
+    }
+}
+
+
+
+
+@media screen and (max-width: 640px) {
+    .searched-result-text h4 {
+        font-size: 20px;
+    }
+    .main-search-bar {
+        width: 90%
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .main-search-bar {
+        width: 90%;
+    }
+}
+
+
+
+@media screen and (max-width: 360px) {
+    .logo-text{
+        font-size: 4em;
+    }
+    .main-search-bar {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .logo-text {
+        font-size: 3.5em;
+    }
+    .main-search-bar {
+        width: 80%;
+    }
+    input.main-search-bar {
+        font-size: 15px;
+    }
+}
+
+
+@media screen and (max-width: 280px) {
+    .logo-text{
+        font-size: 3em;
+    }
+    input.main-search-bar {
+        font-size: 14px;
+    }
+    .main-search-bar {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .logo-text i {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width:280px) {
+    .logo-text i {
+        font-size: 12px;
+    }
+}

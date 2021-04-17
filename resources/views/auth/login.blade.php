@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+    <title>Uniworks - Kyçu</title>
+@endsection
 @section('imports')
 <link rel="stylesheet" href="{{asset('css/login-style.css')}}">
 @endsection
