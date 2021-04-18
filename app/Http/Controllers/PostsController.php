@@ -94,8 +94,11 @@ class PostsController extends Controller
                 $input['file_id'] = $file->id;
             }
         $input['user_id'] = auth()->user()->id; //per identifikimin e perdoruesit qe ka krijuar postimin
-       $post = Post::create($input); //krijo postimin
 
+       $post = Post::create($input); //krijo postimin
+        if (!auth()->user()->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+            auth()->user()->posts()->attach($post->id);//krijo postim per vete
+        }
         $iteration = -1;
         foreach ($request->id as $id){ //krijo postimet per userat tjere
             $iteration++;
@@ -129,17 +132,18 @@ class PostsController extends Controller
             }
         }
 
-        if (!auth()->user()->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
-            auth()->user()->posts()->attach($post->id);//krijo postim per vete
-        }
-        foreach (explode(',',$request->tags) as $tag){
-            if (Tag::where('name',$tag)->exists()){
-                $tag = Tag::where('name',$tag)->first();
-                $post->tags()->attach($tag->id);
-            }
-            else{
-                $tag = Tag::create(['name'=>$tag]);
-                $post->tags()->attach($tag->id);
+//        if (!auth()->user()->posts->contains($post->id)) { //nese nuk eshte useri pronar i postimit atehere shto
+//            auth()->user()->posts()->attach($post->id);//krijo postim per vete
+//        }
+        if ($request->tags != null) {
+            foreach (explode(',', $request->tags) as $tag) {
+                if (Tag::where('name', $tag)->exists()) {
+                    $tag = Tag::where('name', $tag)->first();
+                    $post->tags()->attach($tag->id);
+                } else {
+                    $tag = Tag::create(['name' => $tag]);
+                    $post->tags()->attach($tag->id);
+                }
             }
         }
         session()->flash('added_post', 'Postimi u krijua me sukses.');

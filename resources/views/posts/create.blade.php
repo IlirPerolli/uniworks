@@ -86,13 +86,14 @@
 
 
                 <div class="form-group">
-                    <label for="title">Titulli</label>
+                    <label for="title">Titulli <span style="color: #e3342f; ">*</span></label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" placeholder="Titulli i artikullit" autocomplete="off">
                 </div>
                 @error('title')
-                <span style="color:red">{{ $message }}</span>
+                <span style="color: #e3342f; font-size: 12px; padding-left: 12px">{{ $message }}</span>
                 <br>
                 @enderror
+
 
                <div style="margin-bottom: -50px; margin-top: 30px">Autoret</div>
                 <div class="form-row">
@@ -139,11 +140,11 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="abstract">Abstrakti</label>
+                    <label for="abstract">Abstrakti <span style="color: #e3342f; ">*</span></label>
                     <textarea class="form-control" id="abstract" name="abstract" rows="3"
                               placeholder="Shkruani abstraktin e artikullit...">{{old('abstract')}}</textarea>
                     @error('abstract')
-                    <span style="color:red">{{ $message }}</span>
+                    <span style="color: #e3342f; font-size: 12px; padding-left: 12px">{{ $message }}</span>
                     @enderror
 
                 </div>
@@ -155,21 +156,21 @@
                     <label for="resource">Burimi</label>
                     <input type="text" class="form-control" id="resource" value="{{ old('resource') }}" name="resource" placeholder="Burimi i artikullit" autocomplete="off">
                     @error('resource')
-                    <span style="color:red">{{ $message }}</span>
+                    <span style="color: #e3342f; font-size: 12px; padding-left: 12px">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="resource">Viti</label>
+                    <label for="resource">Viti <span style="color: #e3342f; ">*</span></label>
                     <input type="number" min="1900" max="2021" class="form-control" id="year" value="{{ old('year') }}" name="year" placeholder="Viti i publikimit" autocomplete="off">
                     @error('year')
-                    <span style="color:red">{{ $message }}</span>
+                    <span style="color: #e3342f; font-size: 12px; padding-left: 12px">{{ $message }}</span>
                     @enderror
                 </div>
 
                     <div class="form-row">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
-                                <label for="category">Kategoria</label>
+                                <label for="category">Kategoria <span style="color: #e3342f; ">*</span></label>
                                 <select class="form-control" name="category_id" id="category">
                                     <option value="">Zgjedh kategorine</option>
                                     @foreach($categories as $category)
@@ -177,7 +178,7 @@
                                     @endforeach
                                 </select>
                                 @error('category_id')
-                                <span style="color:red">{{ $message }}</span>
+                                <span style="color: #e3342f; font-size: 12px; padding-left: 12px">{{ $message }}</span>
                                 @enderror
                                 @if(session()->has('category_error'))
                                     <span style="color:red">{{session('category_error')}}</span>
@@ -186,7 +187,7 @@
                         </div>
                         <div class="col-sm-12 col-md-6">
                                 <div class="form-group" id="upload-article">
-                                    <label for="upload">Ngarko artikullin</label>
+                                    <label for="upload">Ngarko artikullin <span style="color: #e3342f; ">*</span></label>
                                     <div style="width: 100%;  word-break: break-all">
                                     <div class='file-input' style="border:1px solid #ced4da;">
 
@@ -198,7 +199,7 @@
 
                                     </div></div>
                             @error('file_id')
-                            <span style="color:red">{{ $message }}</span>
+                            <span style="color: #e3342f; font-size: 12px; padding-left: 12px">{{ $message }}</span>
                             @enderror
 
                         </div>

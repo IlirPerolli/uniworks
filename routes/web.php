@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 Route::get('/',function(){
-    $tags = \App\Models\Tag::take(14)->get();
+    $tags = \App\Models\Tag::take(10)->orderBy('id','desc')->get();
    return view('index',compact('tags'));
 })->name('index');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
